@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import Header from '../components/shared/Header';
 import BaseLayout from '../components/layouts/BaseLayout';
+import { Container } from 'reactstrap';
+
 
 class Index extends Component {
 render() {
 		return (
 			<BaseLayout>
-				<h1>Index Page</h1>
+				<Container>
+
+				</Container>
 			</BaseLayout>
 
 		);
