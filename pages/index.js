@@ -9,7 +9,7 @@ class Index extends Component {
 	constructor (props) {
 		super(props);
 
-		this.roles = ['Ruby on Rails', 'React.js', 'Python', 'HTML', 'CSS', 'JavaScript']
+		this.roles = ['Ruby on Rails', 'React.js', 'Python', 'HTML/CSS', 'JavaScript']
 	}
 
 	render() {
@@ -50,7 +50,7 @@ class Index extends Component {
 				            <Typed
 										  loop
 										  typeSpeed={70}
-										  backSpeed={70}
+										  backSpeed={40}
 										  strings={this.roles}
 										  backDelay={1000}
 										  loopCount={0}
