@@ -9,7 +9,7 @@ class Index extends Component {
 	constructor (props) {
 		super(props);
 
-		this.roles = ['Ruby on Rails', 'React.js', 'Python']
+		this.roles = ['Ruby on Rails', 'React.js', 'Python', 'HTML', 'CSS', 'JavaScript']
 	}
 
 	render() {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Container} from 'reactstrap';
 
 const BasePage = ({ className, children }) => {
@@ -13,6 +14,10 @@ const BasePage = ({ className, children }) => {
 
 BasePage.defaultProps = {
 	className: ''
+}
+
+BasePage.propTypes = {
+	className: PropTypes.string.isRequired
 }
 
 export default BasePage; 

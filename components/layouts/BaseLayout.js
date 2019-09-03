@@ -1,15 +1,14 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Header from '../shared/Header';
 
-const BaseLayout = (props) => {
-	const { className, children } = props;
-
+const BaseLayout = ({ className, children }) => {
 	return (
 		<div className='layout-container'>
 			<Header />
 			<main className={`cover ${className}`}>
 				<div className='wrapper'>
-					{children}
+					{ children }
 				</div>
 			</main>			
 		</div>
