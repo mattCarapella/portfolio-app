@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from '../routes';
+import BasePage from '../components/BasePage';
 import BaseLayout from '../components/layouts/BaseLayout';
 
 class Portfolios extends Component {
@@ -33,8 +34,10 @@ class Portfolios extends Component {
 		
 		return (
 			<BaseLayout>
-				<h1>Portfolios Page</h1>
-				<ul>{ this.renderPosts(posts) }</ul>
+				<BasePage className='portfolios-page'>	
+					<h1>Portfolios Page</h1>
+					<ul>{ this.renderPosts(posts) }</ul>
+				</BasePage>
 			</BaseLayout>
 		);
 	}

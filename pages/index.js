@@ -46,17 +46,19 @@ class Index extends Component {
 			              Welcome to the portfolio website of Filip Jerga.
 			              Get informed, collaborate and discover projects I was working on through the years!
 			            </h1>
-			            <Typed
-									  loop
-									  typeSpeed={70}
-									  backSpeed={70}
-									  strings={this.roles}
-									  backDelay={1000}
-									  loopCount={0}
-									  showCursor
-									  className="self-typed"
-									  cursorChar="|"
-									/>
+				          <div className="moving-text-container">  
+				            <Typed
+										  loop
+										  typeSpeed={70}
+										  backSpeed={70}
+										  strings={this.roles}
+										  backDelay={1000}
+										  loopCount={0}
+										  showCursor={false}
+										  className="self-typed"
+										  cursorChar="..."
+										/>
+									</div>
 			          </div>
 			          <div className="hero-welcome-bio">
 			            <h1>

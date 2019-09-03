@@ -1,5 +1,6 @@
 @import './shared/fonts';
 @import './index';
+@import './header';
 @import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400&display=swap');
 
 html, body {
@@ -19,4 +20,10 @@ h1 {
 	color: white;
 }
 
+.absolute {
+  position: absolute;
+}
 
+.base-page {
+	padding-top: 150px;
+}
