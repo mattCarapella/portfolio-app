@@ -1,9 +1,22 @@
 @import './shared/fonts';
+@import './index';
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400&display=swap');
 
 html, body {
-	font-family: 'Monstserrat', 'Helvetica';
-} 
-
-.customClassFromFile {
-	color: blue;
+	height:100%;
+  width:100%;
+	font-family: 'Montserrat', sans-serif;
 }
+
+h1 {
+	font-weight: 100;
+}
+
+.self-typed {
+	font-size: 31px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	color: white;
+}
+
+
