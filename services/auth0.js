@@ -50,31 +50,32 @@ class Auth0 {
 		Cookies.remove('expiresAt');		
 		this.auth0.logout({
 			returnTo: '',
-			clientID: '1jPjIJ1sTXaYcj2yaNdes4cvJnvRPFA0'
+			clientID: '1jPjIJ1sTXaYcj2yaNdes4cvJnvRPFA0' 
 		})
 	}
 
-	isAuthenticated() {
-		// Check if current time is past the access token's expiration time
-		const expiresAt = Cookies.getJSON ('expiresAt');
-		return new Date().getTime() < expiresAt;
-	}
+	// isAuthenticated() {
+	// 	// Check if current time is past the access token's expiration time
+	// 	const expiresAt = Cookies.getJSON ('expiresAt');
+	// 	return new Date().getTime() < expiresAt;
+	// }
 
 	verifyToken(token) {
+		// Returns a user object if the jwt can be verifified and decoded
 		if (token) {
 			const decodedToken = jwt.decode(token);
 			const expiresAt = decodedToken.exp * 1000;
-			return (decodedToken && new Date().getTime() * expiresAt) ? decodedToken : undefined; 
+			return (decodedToken && new Date().getTime() < expiresAt) ? decodedToken : undefined; 
 		}
+		return undefined;
 	}
 
 	clientAuth() {
 		// debugger
-
 		//return this.isAuthenticated();
 		const token = Cookies.getJSON('jwt');
 		const verifiedToken = this.verifyToken(token);
-		return token;
+		return verifiedToken;				// returns user object
 	}
 
 	serverAuth(req) {
@@ -87,8 +88,8 @@ class Auth0 {
 			if (!tokenCookie) { return undefined }
 			const token = tokenCookie.split('=')[1];
 			const verifiedToken = this.verifyToken(token);
-			return verifiedToken;
-		}$
+			return verifiedToken;			// returns user object
+		}
 		return undefined;
 	}
 }
