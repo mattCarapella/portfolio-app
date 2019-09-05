@@ -19,7 +19,6 @@ class Index extends Component {
 			    <div className="background-image">
 			      <img src="/static/images/background-index.png" />
 			    </div>
-
 			    <Container>
 			      <Row>
 			        <Col md="6">
