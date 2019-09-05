@@ -8,7 +8,6 @@ import Typed from 'react-typed';
 class Index extends Component {
 	constructor (props) {
 		super(props);
-
 		this.roles = ['Ruby on Rails', 'React.js', 'Python', 'HTML/CSS', 'JavaScript']
 	}
 
@@ -44,9 +43,8 @@ class Index extends Component {
 			        <Col md="6" className="hero-welcome-wrapper">
 			          <div className="hero-welcome-text">
 			            <h1>
-			              Welcome to the portfolio website of Filip Jerga.
-			              Get informed, collaborate and discover projects I was working on through the years!
-			            </h1>
+			              Matthew Carapella.
+			            </h1>  
 				          <div className="moving-text-container">  
 				            <Typed
 										  loop
@@ -60,6 +58,9 @@ class Index extends Component {
 										  cursorChar="..."
 										/>
 									</div>
+									<h1>
+			              Get informed, collaborate and discover projects I was working on through the years!
+			            </h1>
 			          </div>
 			          <div className="hero-welcome-bio">
 			            <h1>
