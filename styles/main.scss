@@ -1,6 +1,8 @@
 @import './shared/fonts';
+@import './shared/colors';
 @import './index';
 @import './header';
+@import './portfolios';
 @import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400&display=swap');
 
 html, body {
@@ -24,10 +26,31 @@ h1 {
   position: absolute;
 }
 
+.error {
+	font-weight: 500;
+	color: red;
+}
+
 .base-page {
 	padding-top: 150px;
 }
 
 .clickable {
 	cursor: pointer;
+}
+
+.base-page {
+  padding-top: 150px;
+  color: black;
+  background-color: #ecedee;
+  min-height: 100vh;
+
+  .page-header {
+    .page-header-title {
+      font-weight: 700;
+      color: black;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+  }
 }

@@ -2,11 +2,15 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Header from '../shared/Header';
 
-const BaseLayout = ({ className, isAuthenticated, user, children }) => {
+const BaseLayout = (props) => {
+	const { className, isAuthenticated, user, children } = props;
+	const headerType = props.headerType || "default";
+
 	return (
 		<div className='layout-container'>
-			<Header isAuthenticated={isAuthenticated} user={user}/>
-			<main className={`cover ${className}`}>
+			
+			<Header className={`port-nav-${headerType}`} isAuthenticated={isAuthenticated} user={user} />
+			<main className={`cover ${className}` }>
 				<div className='wrapper'>
 					{ children }
 				</div>

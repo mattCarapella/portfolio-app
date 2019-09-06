@@ -1,0 +1,152 @@
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Button, FormGroup, Label } from 'reactstrap';
+import PortInput from '../form/PortInput';
+
+const validateInputs = (values) => {
+  let errors = {};
+
+  Object.entries(values).forEach(([key, value]) => {
+    if (!values[key]) {
+      errors[key] = `${key.replace(/^\w/, c => c.toUpperCase())} is required.`;
+    }
+  })
+
+  // Object.keys(values).forEach((key) => {
+  //   if (!values[key]) {
+  //     errors[key] = `${key.replace(/^\w/, c => c.toUpperCase())} is required.`;
+  //   }
+  // })
+
+  return errors;
+}
+
+const INITIAL_VALUES = { title: '', company: '', location: '', position: '', description: '', startDate: '', endDate: '' };
+
+const PortfolioCreateForm = () => (  
+  <div>
+    <Formik
+      initialValues={INITIAL_VALUES}
+      validate={validateInputs}
+      onSubmit={(values, { setSubmitting }) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 400);
+      }}
+    >
+      {({ isSubmitting }) => (
+        <Form>
+          <Field 
+            type='text' 
+            label='Title' 
+            name='title' 
+            label='Title'
+            autoComplete='off' 
+            component={PortInput} />
+          <Field 
+            type='title' 
+            label='Company' 
+            name='company' 
+            label='Company'
+            autoComplete='off' 
+            component={PortInput} />
+          <Field 
+            type='title' 
+            label='Location' 
+            name='location' 
+            label='Location'
+            autoComplete='off' 
+            component={PortInput} /> 
+          <Field 
+            type='title' 
+            label='Position' 
+            name='position' 
+            label='Position'
+            autoComplete='off' 
+            component={PortInput} />
+          <Field 
+            type='textarea' 
+            label='Description' 
+            name='description' 
+            label='Desctiption'
+            autoComplete='off' 
+            component={PortInput} />
+          <FormGroup>
+            <Label>End Date</Label>
+            <Field className='form-control' type='title' name='startDate' />
+            <ErrorMessage name='startDate' component='div' />
+          </FormGroup>
+          <FormGroup>
+            <Label>End Date</Label>
+            <Field className='form-control' type='title' name='endDate' />
+            <ErrorMessage name='endDate' component='div' />
+          </FormGroup>
+
+          <button type='submit' disabled={isSubmitting}>
+            Submit
+          </button>
+        </Form>
+      )}
+    </Formik>
+  </div>
+);
+
+export default PortfolioCreateForm;
+
+
+
+
+
+// import React, { Component } from 'react';
+
+// class PortfolioCreateForm extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {title: '', description: '', language: ''};
+//     this.handleChange = this.handleChange.bind(this);
+//     this.handleSubmit = this.handleSubmit.bind(this);
+//   }
+
+//   handleChange(event) {
+//     this.setState({[event.target.name]: event.target.value});
+//   }
+
+//   handleSubmit(event) {
+//     alert('Your project has been submitted: ' + this.state.title + ' ' + this.state.description + ' ' + this.state.language);
+//     event.preventDefault();
+//   }
+
+//   render() {
+//     return (
+//       <form onSubmit={this.handleSubmit}>
+//          <label>
+//           Project Name:
+//           <input name='title' type='text' value={this.state.value} onChange={this.handleChange} />
+//         </label>
+//         <label>
+//           Description
+//           <textarea name='description' value={this.state.description} onChange={this.handleChange} />
+//         </label>    
+//         <label>
+//           Language:
+//           <select name='language' value={this.state.language} onChange={this.handleChange}>
+//             <option value='ruby'>Ruby</option>
+//             <option value='javascript'>JavaScript</option>
+//             <option value='react'>React</option>
+//             <option value="anguluar">Angular</option>
+//             <option value='vue-js'>Vue.JS</option>
+//             <option value='python'>Python</option>
+//             <option value='java'>Java</option>
+//             <option value='c#'>C#</option>
+//             <option value='c++'>C++</option>
+//             <option value='other'>Other</option>
+//           </select>
+//         </label>
+//         <input type='submit' value='Submit' />
+//       </form>
+//     );
+//   }
+// }
+
+// export default PortfolioCreateForm;
