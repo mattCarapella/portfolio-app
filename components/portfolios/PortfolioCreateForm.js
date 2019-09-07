@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button, FormGroup, Label } from 'reactstrap';
 import PortInput from '../form/PortInput';
+import PortDate from '../form/PortDate';
 
 const validateInputs = (values) => {
   let errors = {};
@@ -10,7 +11,7 @@ const validateInputs = (values) => {
     if (!values[key]) {
       errors[key] = `${key.replace(/^\w/, c => c.toUpperCase())} is required.`;
     }
-  })
+  });
 
   // Object.keys(values).forEach((key) => {
   //   if (!values[key]) {
@@ -41,48 +42,40 @@ const PortfolioCreateForm = () => (
             type='text' 
             label='Title' 
             name='title' 
-            label='Title'
             autoComplete='off' 
             component={PortInput} />
           <Field 
             type='title' 
             label='Company' 
             name='company' 
-            label='Company'
             autoComplete='off' 
             component={PortInput} />
           <Field 
             type='title' 
             label='Location' 
             name='location' 
-            label='Location'
             autoComplete='off' 
             component={PortInput} /> 
           <Field 
             type='title' 
             label='Position' 
             name='position' 
-            label='Position'
             autoComplete='off' 
             component={PortInput} />
           <Field 
             type='textarea' 
             label='Description' 
             name='description' 
-            label='Desctiption'
             autoComplete='off' 
             component={PortInput} />
-          <FormGroup>
-            <Label>End Date</Label>
-            <Field className='form-control' type='title' name='startDate' />
-            <ErrorMessage name='startDate' component='div' />
-          </FormGroup>
-          <FormGroup>
-            <Label>End Date</Label>
-            <Field className='form-control' type='title' name='endDate' />
-            <ErrorMessage name='endDate' component='div' />
-          </FormGroup>
-
+          <Field 
+            label='Start Date'
+            name='startDate'             
+            component={PortDate} />  
+          <Field 
+            label='End Date' 
+            name='endDate'
+            component={PortDate} />
           <button type='submit' disabled={isSubmitting}>
             Submit
           </button>
