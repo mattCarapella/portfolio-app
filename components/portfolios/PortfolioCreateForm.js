@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Button } from 'reactstrap';
+import { Button, FormGroup, Label } from 'reactstrap';
 import PortInput from '../form/PortInput';
 import PortDate from '../form/PortDate';
 
@@ -24,17 +24,12 @@ const validateInputs = (values) => {
 
 const INITIAL_VALUES = { title: '', company: '', location: '', position: '', description: '', startDate: '', endDate: '' };
 
-const PortfolioCreateForm = () => (  
+const PortfolioCreateForm = (props) => (  
   <div>
     <Formik
       initialValues={INITIAL_VALUES}
       validate={validateInputs}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
+      onSubmit={props.onSubmit}
     >
       {({ isSubmitting }) => (
         <Form>
@@ -77,7 +72,12 @@ const PortfolioCreateForm = () => (
             name='endDate'
             canBeDisabled={true}
             component={PortDate} />
-          <Button type='submit' disabled={isSubmitting}>
+          <Button 
+            type='submit' 
+            disabled={isSubmitting}
+            color="success"
+            size="lg"
+          >
             Submit
           </Button>
         </Form>
