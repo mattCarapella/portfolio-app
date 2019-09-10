@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Button, FormGroup, Label } from 'reactstrap';
+import { Button } from 'reactstrap';
 import PortInput from '../form/PortInput';
 import PortDate from '../form/PortDate';
 
@@ -8,16 +8,16 @@ const validateInputs = (values) => {
   let errors = {};
 
   Object.entries(values).forEach(([key, value]) => {
-    if (!values[key]) {
+    if (!values[key] && (values[key] === 'startDate' || values[key] === 'endDate')) {
       errors[key] = `${key.replace(/^\w/, c => c.toUpperCase())} is required.`;
     }
   });
 
-  // Object.keys(values).forEach((key) => {
-  //   if (!values[key]) {
-  //     errors[key] = `${key.replace(/^\w/, c => c.toUpperCase())} is required.`;
-  //   }
-  // })
+  const startDate = values.startDate;
+  const endDate = values.endDate;
+  if (startDate && endDate.isBefore(startDate)) {
+    errors.endDate = 'End Date can not be before Start Date.';
+  }
 
   return errors;
 }
@@ -62,7 +62,7 @@ const PortfolioCreateForm = () => (
             name='position' 
             autoComplete='off' 
             component={PortInput} />
-          <Field 
+          <Field  
             type='textarea' 
             label='Description' 
             name='description' 
@@ -75,10 +75,11 @@ const PortfolioCreateForm = () => (
           <Field 
             label='End Date' 
             name='endDate'
+            canBeDisabled={true}
             component={PortDate} />
-          <button type='submit' disabled={isSubmitting}>
+          <Button type='submit' disabled={isSubmitting}>
             Submit
-          </button>
+          </Button>
         </Form>
       )}
     </Formik>
