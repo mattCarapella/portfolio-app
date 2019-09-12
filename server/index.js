@@ -16,7 +16,7 @@ const bodyParser = require('body-parser');
 
 // ROUTES 
 const bookRoutes = require('./routes/book');
-
+const portfolioRoutes = require('./routes/portfolio');
 
 const secretData = [
 	{ title: 'Secret Data 1', description: 'some data ........' },
@@ -33,12 +33,7 @@ app.prepare()
 		server.use(bodyParser.json());
 
 		server.use('/api/v1/books', bookRoutes);
-
-		// server.get('/portfolio/:id', (req, res) => {
-		// 	const actualPage = '/portfolio'
-		// 	const queryParams = { id: req.params.id }
-		// 	app.render(req, res, actualPage, queryParams)
-		// })
+		server.use('/api/v1/portfolios', portfolioRoutes);
 
 		server.get('/api/v1/secret', authService.checkJWT, (req, res) => {
 			return res.json(secretData);

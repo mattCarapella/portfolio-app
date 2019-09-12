@@ -1,17 +1,5 @@
 const Book = require('../models/book');
 
-exports.saveBook = (req, res) => {
-	const bookData = req.body;
-	console.log(bookData);
-	const book = new Book(bookData);
-
-	book.save((err, createdBook) => {
-		if (err) {
-			return res.status(422).send(err);
-		}
-		return res.json(createdBook);
-	});
-}  
 
 exports.getBooks = (req, res) => {
 	// empty object returns all books
@@ -22,6 +10,18 @@ exports.getBooks = (req, res) => {
 		return res.json(allBooks);
 	})
 } 
+
+exports.saveBook = (req, res) => {
+	const bookData = req.body;
+	const book = new Book(bookData);
+
+	book.save((err, createdBook) => {
+		if (err) {
+			return res.status(422).send(err);
+		}
+		return res.json(createdBook);
+	});
+}  
 
 exports.updateBook = (req, res) => {
 	const bookId = req.params.id;
