@@ -1,21 +1,38 @@
 const express = require('express');
 const next = require('next');
+const mongoose = require('mongoose');
 const routes = require('../routes');
+
 
 // SERVICES
 const authService = require('./services/auth');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = routes.getRequestHandler(app);
+const config = require('./config');
+
+const Book = require('./models/book'); 
+const bodyParser = require('body-parser');
+
+// ROUTES 
+const bookRoutes = require('./routes/book');
+
 
 const secretData = [
 	{ title: 'Secret Data 1', description: 'some data ........' },
 	{ title: 'Secret Data 2', description: 'some data 2...........'}
 ]
 
+mongoose.connect(config.DB_URI, { useNewUrlParser: true })
+	.then(() => console.log("-----  Database connected..."))
+	.catch(err => console.log(err))
+
 app.prepare()
 	.then(() => {
 		const server = express();
+		server.use(bodyParser.json());
+
+		server.use('/api/v1/books', bookRoutes);
 
 		// server.get('/portfolio/:id', (req, res) => {
 		// 	const actualPage = '/portfolio'
