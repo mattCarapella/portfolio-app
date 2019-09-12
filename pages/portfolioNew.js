@@ -3,27 +3,45 @@ import BasePage from '../components/BasePage';
 import BaseLayout from '../components/layouts/BaseLayout'; 
 import PortfolioCreateForm from '../components/portfolios/PortfolioCreateForm';
 import withAuth from '../components/hoc/withAuth';
+import { Router } from '../routes';
 import { Row, Col } from 'reactstrap';
+import { createPortfolio } from '../actions';
 
 class PortfolioNew extends Component {
 
 	constructor(props) {
 		super();
+
+		this.state = {
+			error: undefined
+		};
+
 		this.savePortfolio = this.savePortfolio.bind(this);
 	}
 
-	savePortfolio(portfolioValues) {
-		alert(JSON.stringify(portfolioValues, null, 2));
-    // setSubmitting(false);
+	savePortfolio(portfolioData, { setSubmitting }) {
+		setSubmitting(true);
+  	createPortfolio(portfolioData)
+  		.then((portfolio) => {
+  			setSubmitting(false);
+  			this.setState({ error: undefined });
+  			Router.pushRoute('/portfolios');
+  		})
+  		.catch((err) => { 
+  			const error = err.message || 'Server Error';
+  			setSubmitting(false);
+  			this.setState({ error: err.message });
+  		}) 
 	}
 
 	render() {
+		const { error } = this.state;
 		return (
 			<BaseLayout {...this.props.auth}>
 				<BasePage className='portfolio-create--page' title='Create a new Portfolio'>		
 					<Row>
 						<Col md='6'>	
-							<PortfolioCreateForm onSubmit={this.savePortfolio} />
+							<PortfolioCreateForm error={error} onSubmit={this.savePortfolio} />
 						</Col>
 					</Row>
 				</BasePage>

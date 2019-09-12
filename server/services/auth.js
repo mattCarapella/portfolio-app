@@ -28,7 +28,7 @@ exports.checkJWT = jwt({
 
 exports.checkRole = role => (req, res, next) => {
 	const user = req.user;
-	if (user && (user[namespace + 'role'] === role)) {
+	if (user && (user[namespace + 'roles'] === role)) {
 		next();
 	}
 	else {

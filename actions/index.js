@@ -2,25 +2,45 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { getCookieFromReq } from '../helpers/utils';
 
+const axiosInstance = axios.create({
+	baseURL: 'http://localhost:3000/api/v1',
+	timeOut: 3000
+});
+
 const setAuthHeader = (req) => {
 	const token = req ? getCookieFromReq(req, 'jwt') : Cookies.getJSON('jwt');
+	console.log('*** TOKEN: ', token);
 	if (token) {
 		return { headers: {'authorization': `Bearer ${token}`}};
 	}
 	return undefined;
 }
 
+const rejectPromise = (resError) => {
+	let error = {};
+	debugger;
+	if (resError && resError.response && resError.response.data) {
+		error = resError.response.data;
+	}
+	else {
+		error = resError;
+	}
+	return Promise.reject(error);
+}
+
 export const getSecretData = async (req) => {
 	// const url = req ? 'http://localhost:3000/api/v1/secret' : '/api/v1/secret';
-	const url = 'http://localhost:3000/api/v1/secret'
-	return await axios.get(url, setAuthHeader(req)).then(response => response.data);
+	const url = '/secret'
+	return await axiosInstance.get(url, setAuthHeader(req)).then(response => response.data);
 } 
 
-// export const getSecretDataServer = async (req) => {
-// 	return await axios.get('http://localhost:3000/api/v1/secret', setAuthHeader(req)).then(response => response.data);
-// } 
 
-export const getPortfolios = async (req) => {
-	const url = 'http://localhost:3000/api/v1/portfolios';
-	return await axios.get(url, setAuthHeader(req)).then(response => response.data);
+export const getPortfolios = async () => {
+	return await axiosInstance.get('/portfolios').then(response => response.data);
 }
+
+export const createPortfolio = async (portfolioData) => {
+	return await axiosInstance.post('/portfolios', portfolioData, setAuthHeader())
+		.then(response => response.data)
+		.catch(error => rejectPromise(error))
+} 

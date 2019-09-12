@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Button, FormGroup, Label } from 'reactstrap';
+import { Button, Alert } from 'reactstrap';
 import PortInput from '../form/PortInput';
 import PortDate from '../form/PortDate';
 
@@ -8,14 +8,15 @@ const validateInputs = (values) => {
   let errors = {};
 
   Object.entries(values).forEach(([key, value]) => {
-    if (!values[key] && (values[key] === 'startDate' || values[key] === 'endDate')) {
+    if (!values[key] && key !== 'endDate') {
       errors[key] = `${key.replace(/^\w/, c => c.toUpperCase())} is required.`;
     }
   });
 
   const startDate = values.startDate;
   const endDate = values.endDate;
-  if (startDate && endDate.isBefore(startDate)) {
+
+  if (startDate && endDate && endDate.isBefore(startDate)) {
     errors.endDate = 'End Date can not be before Start Date.';
   }
 
@@ -72,6 +73,13 @@ const PortfolioCreateForm = (props) => (
             name='endDate'
             canBeDisabled={true}
             component={PortDate} />
+
+          { props.error && 
+            <Alert color="danger">
+              { props.error }
+            </Alert>
+          }
+
           <Button 
             type='submit' 
             disabled={isSubmitting}
