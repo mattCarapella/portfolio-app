@@ -4,6 +4,8 @@ import auth0 from '../services/auth0';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/main.scss';
 
+const namespace= 'http://localhost:3000/'; 
+
 class MyApp extends App {
 
   static async getInitialProps({ Component, router, ctx }) {
@@ -20,13 +22,11 @@ class MyApp extends App {
       isAuthenticated = true;
     }
 
-    console.log("********** USER LOGGED IN: ");
-    console.log(user);
-    //const auth = { isAuthenticated };
-    const auth = { user, isAuthenticated };
+    const isSiteOwner =  user && user[namespace + 'roles'] === 'siteOwner';
+    const auth = { user, isAuthenticated, isSiteOwner  };
 
     return { pageProps, auth };
-  }
+  } 
 
   render() {
     const { Component, pageProps, auth } = this.props

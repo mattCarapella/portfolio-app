@@ -9,6 +9,18 @@ exports.getPortfolios = (req, res) => {
 	});
 }
 
+exports.getPortfolioById = (req, res) => {
+	const portfolioId = req.params.id;
+	Portfolio.findById(portfolioId)
+					 .select('-__v') // -__v property comes from Mongo
+					 .exec((err, foundPortfolio) => {
+							if (err) {
+								return res.status(422).send(err);
+							}
+							return res.json(foundPortfolio);
+						});
+}
+
 exports.savePortfolio = (req, res) => {
 	const portfolioData = req.body;
 	const userId = req.user.sub || '';
@@ -24,21 +36,23 @@ exports.savePortfolio = (req, res) => {
 }
 
 exports.updatePortfolio = (req, res) => {
-	const portfolioId = req.params.id;
-	const portfolioData = req.body;
+  const portfolioId = req.params.id;
+  const portfolioData = req.body;
 
-	Book.findById(portfolioId, (err, foundPortfolio) => {
-		if (err) {
-			return res.status(422).send(err)
-		}
-		foundPortfolio.set(portfolioData); 
-		foundPortfolio.save((err, savedPortfolio) => {
-			if (err) {
-				return res.status(422).send(err);
-			}
-			return res.json(foundPortfolio);
-		});
-	});
+  Portfolio.findById(portfolioId, (err, foundPortfolio) => {
+    if (err) {
+      return res.status(422).send(err);
+    }
+
+    foundPortfolio.set(portfolioData);
+    foundPortfolio.save((err, savedPortfolio) => {
+      if (err) {
+        return res.status(422).send(err);
+      }
+
+      return res.json(savedPortfolio);
+    });
+  })
 }
 
 exports.deletePortfolio = (req, res) => {
@@ -49,4 +63,4 @@ exports.deletePortfolio = (req, res) => {
 		}
 		return res.json({ status: 'DELETED' });
 	});
-}
+} 

@@ -1,20 +1,20 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button, Alert } from 'reactstrap';
+import moment from 'moment';
 import PortInput from '../form/PortInput';
 import PortDate from '../form/PortDate';
 
 const validateInputs = (values) => {
   let errors = {};
-
   Object.entries(values).forEach(([key, value]) => {
     if (!values[key] && key !== 'endDate') {
       errors[key] = `${key.replace(/^\w/, c => c.toUpperCase())} is required.`;
     }
   });
 
-  const startDate = values.startDate;
-  const endDate = values.endDate;
+  const startDate = moment(values.startDate);
+  const endDate = moment(values.endDate);
 
   if (startDate && endDate && endDate.isBefore(startDate)) {
     errors.endDate = 'End Date can not be before Start Date.';
@@ -23,14 +23,12 @@ const validateInputs = (values) => {
   return errors;
 }
 
-const INITIAL_VALUES = { title: '', company: '', location: '', position: '', description: '', startDate: '', endDate: '' };
-
-const PortfolioCreateForm = (props) => (  
+const PortfolioCreateForm = ({ initialValues, onSubmit, error }) => (  
   <div>
     <Formik
-      initialValues={INITIAL_VALUES}
-      validate={validateInputs}
-      onSubmit={props.onSubmit}
+      initialValues={ initialValues }
+      validate={ validateInputs }
+      onSubmit={ onSubmit }
     >
       {({ isSubmitting }) => (
         <Form>
@@ -39,50 +37,52 @@ const PortfolioCreateForm = (props) => (
             label='Title' 
             name='title' 
             autoComplete='off' 
-            component={PortInput} />
+            component={ PortInput } />
           <Field 
             type='title' 
             label='Company' 
             name='company' 
             autoComplete='off' 
-            component={PortInput} />
+            component={ PortInput } />
           <Field 
             type='title' 
             label='Location' 
             name='location' 
             autoComplete='off' 
-            component={PortInput} /> 
+            component={ PortInput } /> 
           <Field 
             type='title' 
             label='Position' 
             name='position' 
             autoComplete='off' 
-            component={PortInput} />
+            component={ PortInput } />
           <Field  
             type='textarea' 
             label='Description' 
             name='description' 
             autoComplete='off' 
-            component={PortInput} />
+            component={ PortInput } />
           <Field 
             label='Start Date'
-            name='startDate'             
-            component={PortDate} />  
+            name='startDate' 
+            initialDate={ initialValues.startDate }           
+            component={ PortDate } />  
           <Field 
             label='End Date' 
             name='endDate'
+            initialDate={ initialValues.endDate } 
             canBeDisabled={true}
-            component={PortDate} />
+            component={ PortDate } />
 
-          { props.error && 
+          { error && 
             <Alert color="danger">
-              { props.error }
+              { error }
             </Alert>
           }
 
           <Button 
             type='submit' 
-            disabled={isSubmitting}
+            disabled={ isSubmitting }
             color="success"
             size="lg"
           >

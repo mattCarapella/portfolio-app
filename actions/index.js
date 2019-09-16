@@ -8,8 +8,7 @@ const axiosInstance = axios.create({
 });
 
 const setAuthHeader = (req) => {
-	const token = req ? getCookieFromReq(req, 'jwt') : Cookies.getJSON('jwt');
-	console.log('*** TOKEN: ', token);
+	const token = req ? getCookieFromReq(req, 'jwt') : Cookies.getJSON('jwt');  
 	if (token) {
 		return { headers: {'authorization': `Bearer ${token}`}};
 	}
@@ -17,15 +16,15 @@ const setAuthHeader = (req) => {
 }
 
 const rejectPromise = (resError) => {
-	let error = {};
-	debugger;
-	if (resError && resError.response && resError.response.data) {
-		error = resError.response.data;
-	}
-	else {
-		error = resError;
-	}
-	return Promise.reject(error);
+  let error = {};
+
+  if (resError && resError.response && resError.response.data) {
+    error = resError.response.data;
+  } else {
+    error = resError;
+  }
+
+  return Promise.reject(error);
 }
 
 export const getSecretData = async (req) => {
@@ -39,8 +38,18 @@ export const getPortfolios = async () => {
 	return await axiosInstance.get('/portfolios').then(response => response.data);
 }
 
+export const getPortfolioById = async (id) => {
+	return await axiosInstance.get(`/portfolios/${id}`).then(response => response.data);
+}
+
 export const createPortfolio = async (portfolioData) => {
 	return await axiosInstance.post('/portfolios', portfolioData, setAuthHeader())
 		.then(response => response.data)
 		.catch(error => rejectPromise(error))
 } 
+
+export const updatePortfolio = async (portfolioData) => {
+  return await axiosInstance.patch(`/portfolios/${portfolioData._id}`, portfolioData, setAuthHeader())
+    .then(response => response.data)
+    .catch(error => rejectPromise(error))
+}

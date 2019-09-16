@@ -7,6 +7,8 @@ import { Router } from '../routes';
 import { Row, Col } from 'reactstrap';
 import { createPortfolio } from '../actions';
 
+const INITIAL_VALUES = { title: '', company: '', location: '', position: '', description: '', startDate: '', endDate: '' };
+
 class PortfolioNew extends Component {
 
 	constructor(props) {
@@ -41,7 +43,11 @@ class PortfolioNew extends Component {
 				<BasePage className='portfolio-create--page' title='Create a new Portfolio'>		
 					<Row>
 						<Col md='6'>	
-							<PortfolioCreateForm error={error} onSubmit={this.savePortfolio} />
+							<PortfolioCreateForm 
+								initialValues={ INITIAL_VALUES } 
+								error={ error } 
+								onSubmit={ this.savePortfolio } 
+							/>
 						</Col>
 					</Row>
 				</BasePage>
