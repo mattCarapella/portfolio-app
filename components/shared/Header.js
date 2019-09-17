@@ -100,7 +100,7 @@ export default class Example extends React.Component {
     return (
       <div>
         <Navbar className={`port-navbar port-nav-base absolute ${className}`} color="transparent" dark expand="md">
-          <NavbarBrand className="port-navbar-brand" href="/">portfolio.io</NavbarBrand>
+          <NavbarBrand className="port-navbar-brand" href="/">Matt Carapella</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -108,7 +108,7 @@ export default class Example extends React.Component {
               	<BsNavlink route="/" title="Home" />
               </NavItem>
               <NavItem className="port-navbar-item">
-              	<BsNavlink route="/portfolios" title="Portfolios" />
+              	<BsNavlink route="/portfolios" title="Portfolio" />
               </NavItem>
               <NavItem className="port-navbar-item">
               	<BsNavlink route="/blog" title="Blog" />
@@ -119,11 +119,7 @@ export default class Example extends React.Component {
               <NavItem className="port-navbar-item">
               	<BsNavlink route="/about" title="About" />
               </NavItem>
-              {	isAuthenticated &&
-		             	<NavItem className="port-navbar-item">
-		             		<span className="nav-link port-navbar-link"> {user.name} </span>
-		             	</NavItem>	
-             	}
+              
 	            { !isAuthenticated &&
 		             	<NavItem className="port-navbar-item">
 		             		<Login/>
