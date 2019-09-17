@@ -31,6 +31,7 @@ export default class PortfolioCard extends Component {
 	        <CardBody>
 	          <p className="portfolio-card-city">{portfolio.location} </p>
 	          <CardTitle className="portfolio-card-title">{portfolio.title}</CardTitle>
+	          <CardTitle className="portfolio-card-text">{portfolio.languages}</CardTitle>
 	          <CardText className="portfolio-card-text">{portfolio.description}</CardText>
 	          <div className="readMore"> 
 	          	{ children }

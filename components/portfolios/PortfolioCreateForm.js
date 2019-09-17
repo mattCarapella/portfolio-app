@@ -39,6 +39,12 @@ const PortfolioCreateForm = ({ initialValues, onSubmit, error }) => (
             autoComplete='off' 
             component={ PortInput } />
           <Field 
+            type='text' 
+            label='Languages' 
+            name='languages' 
+            autoComplete='off' 
+            component={ PortInput } />  
+          <Field 
             type='title' 
             label='Company' 
             name='company' 
