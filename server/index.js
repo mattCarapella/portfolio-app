@@ -3,7 +3,6 @@ const next = require('next');
 const mongoose = require('mongoose');
 const routes = require('../routes');
 
-
 // SERVICES
 const authService = require('./services/auth');
 const dev = process.env.NODE_ENV !== 'production';
