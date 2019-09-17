@@ -2,10 +2,11 @@ import React, { Component, Fragment } from 'react';
 import { Link } from '../routes';
 import BasePage from '../components/BasePage';
 import BaseLayout from '../components/layouts/BaseLayout';
-import { Row, Col, Card, CardHeader, CardBody, CardText, CardTitle, Button } from 'reactstrap';
+import PortfolioCard from '../components/portfolios/PortfolioCard';
+import { Row, Col, Button } from 'reactstrap';
 import { Router } from '../routes';
 
-import { getPortfolios } from '../actions';
+import { getPortfolios, deletePortfolio } from '../actions';
 
 class Portfolios extends Component {
 	
@@ -20,36 +21,45 @@ class Portfolios extends Component {
 		return { portfolios }
 	}
 
+	navigateToEdit(portfolioId, e) {
+		e.stopPropagation();
+		Router.pushRoute(`/portfolios/${portfolioId}/edit`)
+	}
+
+	displayDeleteWarning(portfolioId, e) {
+		e.stopPropagation();
+		const isConfirmed  = window.confirm('Are you sure you want to delete?');
+		if (isConfirmed) {
+			this.deletePortfolio(portfolioId);
+		}
+	}
+
+	deletePortfolio(portfolioId) {
+		deletePortfolio(portfolioId)
+			.then(() => {
+				Router.pushRoute('/portfolios'); 
+			})
+			.catch(err => console.error(err))
+	}
+
 	renderPortfolios(portfolios) {
 		const { isAuthenticated, isSiteOwner } = this.props.auth;
 
 		return portfolios.map((portfolio, index) => {
 			return (
 				<Col md="4" key={index}>
-				  <React.Fragment>
-				    <span>
-				      <Card className="portfolio-card">
-				        <CardHeader className="portfolio-card-header">{portfolio.position}</CardHeader>
-				        <CardBody>
-				          <p className="portfolio-card-city">{portfolio.location} </p>
-				          <CardTitle className="portfolio-card-title">{portfolio.title}</CardTitle>
-				          <CardText className="portfolio-card-text">{portfolio.description}</CardText>
-				          <div className="readMore"> 
-				          	{ isAuthenticated && isSiteOwner &&
-						        	<Fragment>
-						        		<Button onClick={() => Router.pushRoute(`/portfolios/${portfolio._id}/edit`)} className='edit-port-btn' color='warning'> 
-						        			Edit
-						        		</Button>
-						        		<Button className='edit-port-btn' color='danger'>
-						        			Delete
-						        		</Button>
-						        	</Fragment>
-						        }
-				          </div>
-				        </CardBody>
-				      </Card>
-				    </span>
-				  </React.Fragment>
+				  <PortfolioCard portfolio={portfolio}>
+				  	{ isAuthenticated && isSiteOwner &&
+		        	<Fragment>
+		        		<Button onClick={(e) => this.navigateToEdit(portfolio._id, e)} className='edit-port-btn' color='warning'> 
+		        			Edit
+		        		</Button>
+		        		<Button onClick={(e) => this.displayDeleteWarning(portfolio._id, e)} className='edit-port-btn' color='danger'>
+		        			Delete
+		        		</Button>
+		        	</Fragment>
+		        }
+				  </PortfolioCard>
 				</Col>
 			)
 		})
