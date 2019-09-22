@@ -37,7 +37,7 @@ const PortfolioCreateForm = ({ initialValues, onSubmit, error }) => (
             label='Title' 
             name='title' 
             autoComplete='off' 
-            component={ PortInput } />
+            component={ PortInput } />   
           <Field 
             type='text' 
             label='Languages' 
@@ -68,6 +68,18 @@ const PortfolioCreateForm = ({ initialValues, onSubmit, error }) => (
             name='description' 
             autoComplete='off' 
             component={ PortInput } />
+          <Field 
+            type='text' 
+            label='URL' 
+            name='url' 
+            autoComplete='off' 
+            component={ PortInput } /> 
+          <Field 
+            type='text' 
+            label='Github Link' 
+            name='github_link' 
+            autoComplete='off' 
+            component={ PortInput } />  
           <Field 
             label='Start Date'
             name='startDate' 

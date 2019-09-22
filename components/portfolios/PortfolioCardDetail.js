@@ -12,7 +12,7 @@ class PortfolioCardDetail extends React.Component {
           <ModalHeader toggle={toggle}>Position</ModalHeader>
           <ModalBody>
             <p><b>Description: </b>{portfolio.description}</p> 
-            <p><b>Languages: </b>{portfolio.languages}</p>
+            <p><b>Languages / Frameworks: </b>{portfolio.languages}</p>
             <p><b>Company: </b>{portfolio.company}</p> 
             <p><b>Position: </b>{portfolio.position}</p> 
             <p><b>Location: </b>{portfolio.location}</p> 

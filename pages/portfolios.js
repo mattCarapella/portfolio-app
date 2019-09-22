@@ -76,7 +76,7 @@ class Portfolios extends Component {
 						<Button onClick={ () => Router.pushRoute('/portfolioNew') }
 										className='create-port-btn' 
 										color='success'>
-							New Portfolio
+							Add a Project
 						</Button>
 					}
 					<Row>{ this.renderPortfolios(portfolios) }</Row>

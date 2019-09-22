@@ -53,7 +53,7 @@ class PortfolioEdit extends Component {
 
 		return (
 			<BaseLayout {...this.props.auth}>
-				<BasePage className='portfolio-create--page' title='Update Portfolio'>		
+				<BasePage className='portfolio-create--page' title='Update Project'>		
 					<Row>
 						<Col md='6'>	
 							<PortfolioCreateForm 
