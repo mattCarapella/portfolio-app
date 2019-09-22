@@ -5,8 +5,8 @@ exports.createBlog = (req, res) => {
 	const blog = new Blog(blogData);
 
 	if (req.user) {
-		const userId = user.sub;
-		const author = user.name;
+		blog.userId = req.user.sub;
+		blog.author = req.user.name;
 	}
 	
 	blog.save((err, createdBlog) => {
@@ -17,3 +17,13 @@ exports.createBlog = (req, res) => {
 	});
 }
 
+
+exports.getBlogById = (req, res) => {
+	const blogId = req.params.id;
+	Blog.findById(blogId, (err, foundBlog) => {
+		if (err) {
+			return res.status(422).send(err);
+		}
+		return res.json(foundBlog);
+	});
+}
