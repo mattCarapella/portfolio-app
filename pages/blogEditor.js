@@ -8,7 +8,7 @@ class BlogEditor extends Component {
 	render() {
 		return (
 			<BaseLayout {...this.props.auth}>
-				<BasePage className='blog-editor-page' title='Create a new blog post.'>		
+				<BasePage containerClass='editor-wrapper' className='blog-editor-page' title='Create a new blog post.'>		
 					<SlateEditor />
 				</BasePage>
 			</BaseLayout>
