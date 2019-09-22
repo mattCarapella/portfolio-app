@@ -3,15 +3,40 @@ import BasePage from '../components/BasePage';
 import BaseLayout from '../components/layouts/BaseLayout'; 
 import SlateEditor from '../components/slate-editor/Editor';
 import withAuth from '../components/hoc/withAuth';
+import { saveBlog } from '../actions';
 
 class BlogEditor extends Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			isSaving: false
+		}
+
+		this.saveBlog = this.saveBlog.bind(this);
+	}
+
+	saveBlog(heading) {
+		const blog = {};
+		blog.title = heading.title;
+		blog.subtitle = heading.subtitle;
+		this.setState({ isSaving: true });
+		saveBlog().then(data => {
+			// debugger;
+			this.setState({ isSaving: false })
+			console.log(data);
+		})
+	}
+
 	render() {
+		const { isSaving } = this.state;
+
 		return (
-			<BaseLayout {...this.props.auth}>
-				<BasePage containerClass='editor-wrapper' className='blog-editor-page' title='Create a new blog post.'>		
-					<SlateEditor />
+			<BaseLayout { ...this.props.auth }>
+				<BasePage containerClass='editor-wrapper' className='blog-editor-page'>		
+					<SlateEditor isLoading={ isSaving } save={ this.saveBlog } />
 				</BasePage>
-			</BaseLayout>
+			</BaseLayout> 
 		);
 	}
 }

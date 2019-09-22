@@ -34,6 +34,10 @@ export const getSecretData = async (req) => {
 } 
 
 
+// ************************************************************************************************* 
+// ******************************** PORTFOLIO ACTIONS **********************************************
+// *************************************************************************************************
+
 export const getPortfolios = async () => {
 	return await axiosInstance.get('/portfolios').then(response => response.data);
 }
@@ -56,4 +60,16 @@ export const updatePortfolio = async (portfolioData) => {
 
 export const deletePortfolio = (portfolioId) => {
 	return axiosInstance.delete(`/portfolios/${portfolioId}`, setAuthHeader()).then(response => response.data);
+}
+
+// ************************************************************************************************* 
+// ************************************* BLOG ACTIONS **********************************************
+// *************************************************************************************************
+
+export const saveBlog = (blogData) => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			resolve('promise resolved.');
+		}, 1000);
+	})
 }
