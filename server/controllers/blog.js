@@ -34,10 +34,32 @@ exports.createBlog = (req, res) => {
 
 exports.getBlogById = (req, res) => {
 	const blogId = req.params.id;
+	
 	Blog.findById(blogId, (err, foundBlog) => {
 		if (err) {
 			return res.status(422).send(err);
 		}
 		return res.json(foundBlog);
 	});
+}
+
+exports.updateBlog = (req, res) => {
+  const blogId = req.params.id;
+  const blogData = req.body;
+
+  Blog.findById(blogId, function(err, foundBlog) {
+    if (err) {
+      return res.status(422).send(err);
+    }
+
+    foundBlog.set(blogData);
+    foundBlog.updatedAt = new Date();
+    foundBlog.save(function(err, foundBlog) {
+      if (err) {
+        return res.status(422).send(err);
+      }
+
+      return res.json(foundBlog);
+    });
+  });
 }
