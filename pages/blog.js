@@ -16,7 +16,7 @@ class Blog extends Component {
 			        <div className="col-lg-8 col-md-10 mx-auto">
 			          <div className="site-heading">
 			            <h1>Blog</h1>
-			            <span className="subheading">Programming, travelling...</span>
+			            <span className="subheading">Programming, Life, and More...</span>
 			          </div>
 			        </div>
 			      </div>

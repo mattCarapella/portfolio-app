@@ -3,7 +3,7 @@ import BasePage from '../components/BasePage';
 import BaseLayout from '../components/layouts/BaseLayout'; 
 import SlateEditor from '../components/slate-editor/Editor';
 import withAuth from '../components/hoc/withAuth';
-import { saveBlog } from '../actions';
+import { createBlog } from '../actions';
 
 class BlogEditor extends Component {
 
@@ -16,15 +16,19 @@ class BlogEditor extends Component {
 		this.saveBlog = this.saveBlog.bind(this);
 	}
 
-	saveBlog(heading) {
+	saveBlog(story, heading) {
 		const blog = {};
 		blog.title = heading.title;
-		blog.subtitle = heading.subtitle;
+		blog.subTitle = heading.subTitle;
+		blog.story = story;
 		this.setState({ isSaving: true });
-		saveBlog().then(data => {
-			// debugger;
+		createBlog(blog).then(data => {
 			this.setState({ isSaving: false })
 			console.log(data);
+		}).catch(err => {
+			this.setState({ isSaving: false });
+			const message = err.message || 'Server Error!';
+			console.error(message);
 		})
 	}
 

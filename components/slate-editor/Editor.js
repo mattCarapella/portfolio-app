@@ -1,9 +1,14 @@
 import React, { Component, Fragment } from 'react';
+import { Editor } from 'slate-react';
+import { Value } from 'slate';
 import ControlMenu from './ControlMenu';
 import HoverMenu from './HoverMenu';
-import { Editor } from 'slate-react';
 import { renderMark, renderNode } from './renderers';
 import { initialValue } from './initialValue';
+
+import Html from 'slate-html-serializer';
+import { rules } from './rules';
+const html = new Html({ rules });
 
 function BoldMark(props) {
 	return <strong>{ props.children }</strong>
@@ -12,13 +17,16 @@ function BoldMark(props) {
 class SlateEditor extends Component {
 
 	state = {
-		 value: initialValue,
+		 value: Value.create(),
 		 isLoaded: false
 	}
 
 	componentDidMount() {
+		console.log(this.props)
+		const valueFromProps = this.props.initialValue;
+		const value = valueFromProps ? Value.fromJSON(html.deserialize(valueFromProps)) : Value.fromJSON(initialValue);
 		this.updateMenu();
-		this.setState({ isLoaded: true });
+		this.setState({ isLoaded: true, value });
 	}
 
 	componentDidUpdate() {
@@ -58,18 +66,20 @@ class SlateEditor extends Component {
   	const firstBlock = value.document.getBlocks().get(0);
   	const secondBlock = value.document.getBlocks().get(1);
   	const title = firstBlock && firstBlock.text ? firstBlock.text : 'No Title';
-  	const subtitle = secondBlock && secondBlock.text ? secondBlock.text : 'No Subtitle';
-  	
+  	const subTitle = secondBlock && secondBlock.text ? secondBlock.text : 'No Subtitle';
+
   	return {
-  		title: 'TEMP TITLE',
-  		subtitle: 'TEMP SUBTITLE'
+  		title,
+  		subTitle
   	};
   }
 
   save() {
-  	const { save } = this.props;
+  	const { value } = this.state;
+  	const { isLoading, save } = this.props;
   	const headingValues = this.getTitle();
-  	save(headingValues);
+  	const text = html.serialize(value);
+  	!isLoading && save(text, headingValues);
   }
 
 	render() {
@@ -92,9 +102,10 @@ class SlateEditor extends Component {
 
 	renderEditor = (props, editor, next) => { 
 		const children = next();
+		const { isLoading } = props;
 		return (
 			<Fragment>
-				<ControlMenu save={ () => this.save() }> </ControlMenu>
+				<ControlMenu isLoading={ isLoading } save={ () => this.save() }> </ControlMenu>
 				{children}
 				<HoverMenu innerRef={ menu => (this.menu = menu) } editor={ editor } />
 			</Fragment>

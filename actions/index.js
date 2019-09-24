@@ -66,10 +66,12 @@ export const deletePortfolio = (portfolioId) => {
 // ************************************* BLOG ACTIONS **********************************************
 // *************************************************************************************************
 
-export const saveBlog = (blogData) => {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			resolve('promise resolved.');
-		}, 1000);
-	})
+export const createBlog = async (blogData) => {
+	return await axiosInstance.post('/blogs', blogData, setAuthHeader())
+		.then(response => response.data)
+		.catch(error => rejectPromise(error))
+}
+
+export const getBlogById = async (id) => {
+	return await axiosInstance.get(`/blogs/${id}`).then(response => response.data);
 }
