@@ -22,7 +22,6 @@ class SlateEditor extends Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props)
 		const valueFromProps = this.props.initialValue;
 		const value = valueFromProps ? Value.fromJSON(html.deserialize(valueFromProps)) : Value.fromJSON(initialValue);
 		this.updateMenu();
@@ -67,11 +66,7 @@ class SlateEditor extends Component {
   	const secondBlock = value.document.getBlocks().get(1);
   	const title = firstBlock && firstBlock.text ? firstBlock.text : 'No Title';
   	const subTitle = secondBlock && secondBlock.text ? secondBlock.text : 'No Subtitle';
-
-  	return {
-  		title,
-  		subTitle
-  	};
+  	return { title, subTitle };
   }
 
   save() {
@@ -93,8 +88,7 @@ class SlateEditor extends Component {
 									onChange={ this.onChange } 
 									renderMark={ renderMark }
 									renderNode={ renderNode }
-									renderEditor={ this.renderEditor }
-					/>		
+									renderEditor={ this.renderEditor } />		
 				}
 			</Fragment>
 		) 

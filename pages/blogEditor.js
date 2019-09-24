@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Router } from '../routes';
 import BasePage from '../components/BasePage';
 import BaseLayout from '../components/layouts/BaseLayout'; 
 import SlateEditor from '../components/slate-editor/Editor';
@@ -10,21 +11,25 @@ class BlogEditor extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isSaving: false
+			isSaving: false,
+			lockId: Math.floor(1000 + Math.random() * 9000)
 		}
 
 		this.saveBlog = this.saveBlog.bind(this);
 	}
 
 	saveBlog(story, heading) {
+		const { lockId } = this.state;
 		const blog = {};
 		blog.title = heading.title;
 		blog.subTitle = heading.subTitle;
 		blog.story = story;
+		
 		this.setState({ isSaving: true });
-		createBlog(blog).then(data => {
-			this.setState({ isSaving: false })
-			console.log(data);
+
+		createBlog(blog, lockId).then(createdBlog => {
+			this.setState({ isSaving: false });
+			Router.pushRoute(`/blogs/${createdBlog._id}/edit`);
 		}).catch(err => {
 			this.setState({ isSaving: false });
 			const message = err.message || 'Server Error!';
