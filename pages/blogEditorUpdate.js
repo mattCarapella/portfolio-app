@@ -3,7 +3,7 @@ import BasePage from '../components/BasePage';
 import BaseLayout from '../components/layouts/BaseLayout'; 
 import SlateEditor from '../components/slate-editor/Editor';
 import withAuth from '../components/hoc/withAuth';
-import { getBlogById } from '../actions';
+import { getBlogById, updateBlog } from '../actions';
 
 class BlogEditorUpdate extends Component {
 
@@ -21,12 +21,31 @@ class BlogEditorUpdate extends Component {
 
 	constructor(props) {
 		super(props);
+
 		this.state = {
 			isSaving: false
 		}
 
+		this.updateBlog = this.updateBlog.bind(this);
 	}
 
+	updateBlog(story, heading) {
+		const { blog } = this.props;
+    const updatedBlog = {};
+    updatedBlog.title = heading.title;
+    updatedBlog.subTitle = heading.subtitle;
+    updatedBlog.story = story;
+
+    this.setState({isSaving: true});
+
+		updateBlog(updatedBlog, blog._id).then(updatedBlog => {
+			this.setState({isSaving: false});
+		}).catch(err => {
+      this.setState({isSaving: false});
+      const message = err.message || 'Server Error!';
+			console.error(message);
+		})
+	}
 
 	render() {
 		const { blog } = this.props;
@@ -36,7 +55,7 @@ class BlogEditorUpdate extends Component {
 		return (
 			<BaseLayout { ...this.props.auth }>
 				<BasePage containerClass='editor-wrapper' className='blog-editor-page'>		
-					<SlateEditor initialValue={ blog.story } isLoading={ isSaving } save={ () => { console.log("UPDATE GOES HERE") }} />
+					<SlateEditor initialValue={ blog.story } isLoading={ isSaving } save={ this.updateBlog } />
 				</BasePage>
 			</BaseLayout> 
 		);

@@ -75,3 +75,9 @@ export const createBlog = async (blogData, lockId) => {
 export const getBlogById = async (id) => {
 	return await axiosInstance.get(`/blogs/${id}`).then(response => response.data);
 }
+
+export const updateBlog = (blogData, blogId) => {
+  return axiosInstance.patch(`/blogs/${blogId}`, blogData, setAuthHeader())
+          .then(response => response.data)
+          .catch(err => rejectPromise(err))
+}
