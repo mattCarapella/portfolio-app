@@ -3,6 +3,7 @@ import BasePage from '../components/BasePage';
 import BaseLayout from '../components/layouts/BaseLayout'; 
 import withAuth from '../components/hoc/withAuth'; 
 import { Container, Row, Col } from 'reactstrap';
+import PortButtonDropdown from '../components/ButtonDropdown';
 import { Link } from '../routes';
 import { getUserBlogs } from '../actions';
 
@@ -18,14 +19,33 @@ class UserBlogs extends Component {
 		return { blogs };
 	} 
 
+	changeBlogStatus() {
+		alert('Changing Blog Status');
+	}
+
+	deleteBlog(){
+		alert('Deleting Blog');
+	}
+
 	separateBlogs(blogs) {
 		const published = [];
 		const drafts = [];
-
 		blogs.forEach((blog) => {
 			blog.status === 'draft' ? drafts.push(blog) : published.push(blog);
 		});
 		return { published, drafts };
+	}
+
+	createStatus(status) {
+		return status === 'draft' ? 'Publish' : 'Unpublish';
+	}
+
+	dropdownOptions = (blog) => {
+		const status = this.createStatus(blog.status);
+		return [ 
+			{ text: status, handlers: { onClick: () => this.changeBlogStatus() } }, 
+			{ text: 'Delete', handlers: { onClick: () => this.deleteBlog() } } 
+		]
 	}
 
 	renderBlogs(blogs) {
@@ -36,8 +56,9 @@ class UserBlogs extends Component {
 							<Link route={`/blogs/${blog._id}/edit`}>
 								<a>{ blog.title }</a>
 							</Link>
+							<PortButtonDropdown items={this.dropdownOptions(blog)} />
 						</li>
-					))
+					)) 
 				}
 			</ul>
 		)

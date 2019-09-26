@@ -220,8 +220,13 @@
       font-weight: bold;
     }
 
-    .port-dropdown {
+    .port-button-dropdown {
       margin-left: 10px;
+      font-size: 10px;
+
+      .dropdown-toggle {
+        font-size: 14px;
+      }
     }
   }
 }
