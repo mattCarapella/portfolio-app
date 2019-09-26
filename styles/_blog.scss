@@ -169,7 +169,11 @@
   
   @media only screen and (min-width: 991px) {
     .editor-wrapper  {
-      padding: 0 180px;
+      // padding: 0 180px;
+      height: 80vh;
+      padding: 40px 100px 40px 100px;
+      outline: 2px solid black;
+      background-color: white;
     }
   }
 
@@ -203,9 +207,9 @@
       padding-left: 0;
 
       > li {
-        font-size: 28px;
+        font-size: 24px;
         color: black;
-      }
+      } 
 
       a {
         color: #424242;
