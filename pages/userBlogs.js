@@ -4,9 +4,26 @@ import BaseLayout from '../components/layouts/BaseLayout';
 import withAuth from '../components/hoc/withAuth'; 
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from '../routes';
+import { getUserBlogs } from '../actions';
 
 class UserBlogs extends Component {
+
+	static async getInitialProps({req}) {
+		let blogs = []; 
+
+		try {
+			blogs = await getUserBlogs(req);
+		} catch (err) {
+			console.error(err);
+		}
+
+		return { blogs };
+	} 
+
 	render() {
+		const { blogs } = this.props;
+		console.log(blogs);
+
 		return (
 			<BaseLayout {...this.props.auth} headerType={'landing'}>
 			  <div className="masthead" style={{"backgroundImage": "url('/static/images/project_01.jpg')"}}>

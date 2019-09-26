@@ -28,7 +28,6 @@ const rejectPromise = (resError) => {
 }
 
 export const getSecretData = async (req) => {
-	// const url = req ? 'http://localhost:3000/api/v1/secret' : '/api/v1/secret';
 	const url = '/secret'
 	return await axiosInstance.get(url, setAuthHeader(req)).then(response => response.data);
 } 
@@ -66,14 +65,18 @@ export const deletePortfolio = (portfolioId) => {
 // ************************************* BLOG ACTIONS **********************************************
 // *************************************************************************************************
 
-export const createBlog = async (blogData, lockId) => {
-	return await axiosInstance.post(`/blogs?lockId=${lockId}`, blogData, setAuthHeader())
-		.then(response => response.data)
-		.catch(error => rejectPromise(error))
+export const getUserBlogs = async (req) => {
+	return await axiosInstance.get('/blogs/dashboard', setAuthHeader(req)).then(response => response.data);
 }
 
 export const getBlogById = async (id) => {
 	return await axiosInstance.get(`/blogs/${id}`).then(response => response.data);
+}
+
+export const createBlog = async (blogData, lockId) => {
+	return await axiosInstance.post(`/blogs?lockId=${lockId}`, blogData, setAuthHeader())
+		.then(response => response.data)
+		.catch(error => rejectPromise(error))
 }
 
 export const updateBlog = (blogData, blogId) => {

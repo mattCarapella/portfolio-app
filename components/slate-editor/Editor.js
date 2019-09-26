@@ -36,7 +36,7 @@ class SlateEditor extends Component {
 		this.setState({ value });
 	}
 
-	onKeyDown = (event, change, next) => {
+	onKeyDown = (event, change, next) =>  {
 		const { isLoading } = this.props;
 		if (!isLoading && event.which === 83 && (event.ctrlKey || event.metaKey)) {
 			event.preventDefault();

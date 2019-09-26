@@ -33,15 +33,29 @@ exports.createBlog = (req, res) => {
 
 
 exports.getBlogById = (req, res) => {
-	const blogId = req.params.id;
-	
-	Blog.findById(blogId, (err, foundBlog) => {
+  const blogId = req.params.id;
+
+  Blog.findById(blogId, (err, foundBlog) => {
+    if (err) {
+      return res.status(422).send(err);
+    }
+
+    return res.json(foundBlog);
+  });
+}
+
+
+exports.getUserBlogs = (req, res) => {
+	const userId = req.user.sub;
+	Blog.find({userId}, function(err, userBlogs) {
 		if (err) {
 			return res.status(422).send(err);
 		}
-		return res.json(foundBlog);
-	});
+
+		return res.json(userBlogs);
+	})
 }
+
 
 exports.updateBlog = (req, res) => {
   const blogId = req.params.id;
