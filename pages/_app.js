@@ -1,8 +1,10 @@
 import React from 'react'
-import App, { Container } from 'next/app'
+import App, { Container } from 'next/app';
+import { ToastContainer } from 'react-toastify';
 import auth0 from '../services/auth0';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/main.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 const namespace= 'http://localhost:3000/'; 
 
@@ -28,10 +30,13 @@ class MyApp extends App {
     return { pageProps, auth };
   } 
 
+  notify = () => toast("Wow so easy !");
+
   render() {
     const { Component, pageProps, auth } = this.props
     return (
       <Container>
+        <ToastContainer />
         <Component {...pageProps} auth={auth} />
       </Container>
     )
