@@ -51,18 +51,17 @@ class BlogEditorUpdate extends Component {
 	}
 
 	render() {
-		const { blog } = this.props;
-		console.log(blog);
-		const { isSaving } = this.state;
+    const { blog } = this.props;
+    const { isSaving } = this.state;
 
-		return (
-			<BaseLayout { ...this.props.auth }>
-				<BasePage containerClass='editor-wrapper' className='blog-editor-page'>		
-					<SlateEditor initialValue={ blog.story } isLoading={ isSaving } save={ this.updateBlog } />
-				</BasePage>
-			</BaseLayout> 
-		);
-	}
+    return (
+      <BaseLayout {...this.props.auth}>
+        <BasePage containerClass="editor-wrapper" className="blog-editor-page">
+          <SlateEditor initialValue={blog.story} isLoading={isSaving} save={this.updateBlog} />
+        </BasePage>
+      </BaseLayout>
+    )
+  }
 }
 
 export default withAuth('siteOwner')(BlogEditorUpdate);

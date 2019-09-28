@@ -23,9 +23,10 @@ class SlateEditor extends Component {
 
 	componentDidMount() {
 		const valueFromProps = this.props.initialValue;
-		const value = valueFromProps ? Value.fromJSON(html.deserialize(valueFromProps)) : Value.fromJSON(initialValue);
-		this.updateMenu();
-		this.setState({ isLoaded: true, value });
+    const value = valueFromProps ? Value.fromJSON(html.deserialize(valueFromProps)) : Value.fromJSON(initialValue);
+
+    this.updateMenu();
+    this.setState({isLoaded: true, value});
 	}
 
 	componentDidUpdate() {
@@ -33,17 +34,21 @@ class SlateEditor extends Component {
 	}
 
 	onChange = ({ value }) => {
-		this.setState({ value });
-	}
+    this.setState({ value })
+  }
 
-	onKeyDown = (event, change, next) =>  {
-		const { isLoading } = this.props;
-		if (!isLoading && event.which === 83 && (event.ctrlKey || event.metaKey)) {
-			event.preventDefault();
-			this.save();
-		}
-		next();
-	}
+	onKeyDown = (event, change, next) => {
+    const {isLoading} = this.props;
+
+    if (!isLoading && event.which === 83 && (event.ctrlKey || event.metaKey)) {
+      event.preventDefault();
+      this.save();
+      return;
+    }
+
+    next();
+  }
+
 
 	updateMenu = () => {
     const menu = this.menu;
@@ -70,36 +75,44 @@ class SlateEditor extends Component {
 
 
   getTitle() {
-  	const { value } = this.state; 
-  	const firstBlock = value.document.getBlocks().get(0);
-  	const secondBlock = value.document.getBlocks().get(1);
-  	const title = firstBlock && firstBlock.text ? firstBlock.text : 'No Title';
-  	const subTitle = secondBlock && secondBlock.text ? secondBlock.text : 'No Subtitle';
-  	return { title, subTitle };
+    const { value } = this.state;
+    const firstBlock = value.document.getBlocks().get(0);
+    const secondBlock = value.document.getBlocks().get(1);
+
+    const title = firstBlock && firstBlock.text ? firstBlock.text : 'No Title';
+    const subtitle = secondBlock && secondBlock.text ? secondBlock.text : 'No Subtitle';
+
+    return {
+      title,
+      subtitle
+    }
   }
 
   save() {
-  	const { value } = this.state;
-  	const { isLoading, save } = this.props;
-  	const headingValues = this.getTitle();
-  	const text = html.serialize(value);
-  	!isLoading && save(text, headingValues);
+    const { value } = this.state;
+    const { save, isLoading } = this.props;
+    const headingValues = this.getTitle();
+    const text = html.serialize(value);
+
+    !isLoading && save(text, headingValues);
   }
+
 
 	render() {
 		const { isLoaded } = this.state;
 		return (
 			<Fragment>
 				{ isLoaded &&
-					<Editor { ...this.props }
-									placeholder='Enter some text...'
-									value={ this.state.value } 
-									onChange={ this.onChange } 
-									onKeyDown={  this.onKeyDown }
-									renderMark={ renderMark }
-									renderNode={ renderNode }
-									renderEditor={ this.renderEditor } />		
-				}
+          <Editor {...this.props}
+                  placeholder="Enter some text..."
+                  value={this.state.value}
+                  onChange={this.onChange}
+                  onKeyDown={this.onKeyDown}
+                  renderMark={renderMark}
+                  renderNode={renderNode}
+                  renderEditor={this.renderEditor}
+                  />
+        }
 			</Fragment>
 		) 
 	}

@@ -101,7 +101,7 @@ class Blog extends Component {
 			                </a>
 			              </li>
 			            </ul>
-			            <p className="copyright text-muted">Copyright &copy; Filip Jerga 2018</p>
+			            <p className="copyright text-muted">Copyright &copy; Matt Carapella. 2019.</p>
 			          </div>
 			        </Row>
 			      </Container>

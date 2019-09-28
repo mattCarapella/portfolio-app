@@ -77,6 +77,11 @@ export const getBlogById = async (id) => {
 	return await axiosInstance.get(`/blogs/${id}`).then(response => response.data);
 }
 
+
+export const getBlogBySlug = async (slug) => {
+	return await axiosInstance.get(`/blogs/s/${slug}`).then(response => response.data);
+}
+
 export const createBlog = async (blogData, lockId) => {
 	return await axiosInstance.post(`/blogs?lockId=${lockId}`, blogData, setAuthHeader())
 		.then(response => response.data)
