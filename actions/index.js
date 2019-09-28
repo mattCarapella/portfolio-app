@@ -69,6 +69,10 @@ export const getUserBlogs = async (req) => {
 	return await axiosInstance.get('/blogs/dashboard', setAuthHeader(req)).then(response => response.data);
 }
 
+export const getBlogs = async (req) => {
+	return await axiosInstance.get('/blogs').then(response => response.data);
+}
+
 export const getBlogById = async (id) => {
 	return await axiosInstance.get(`/blogs/${id}`).then(response => response.data);
 }
