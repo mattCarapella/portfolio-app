@@ -3,6 +3,8 @@ const router = express.Router();
 const blogController = require('../controllers/blog');
 const authService = require('../services/auth');
 
+router.get('', blogController.getBlogs);
+
 router.get('/dashboard', authService.checkJWT,
                   			 authService.checkRole('siteOwner'),
                   			 blogController.getUserBlogs);
@@ -21,4 +23,7 @@ router.patch('/:id', authService.checkJWT,
 										 authService.checkRole('siteOwner'), 
 										 blogController.updateBlog);
 
+router.delete('/:id', authService.checkJWT,
+			                authService.checkRole('siteOwner'),
+			                blogController.deleteBlog);
 module.exports = router; 
