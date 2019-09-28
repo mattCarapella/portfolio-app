@@ -5,8 +5,10 @@ import { Link } from '../routes';
 import { Container, Row, Col } from 'reactstrap';
 import moment from 'moment';
 import { getBlogs } from '../actions';
+import { shortenText } from '../helpers/utils';
 
-class Blog extends Component {
+
+class Blogs extends Component {
 
 	static async getInitialProps({req}) {
     let blogs = [];
@@ -28,7 +30,7 @@ class Blog extends Component {
               {blog.title}
             </h2>
             <h3 className="post-subtitle">
-              {blog.subTitle}
+              {shortenText(blog.subTitle)}
             </h3>
           </a>
         </Link>
@@ -113,4 +115,4 @@ class Blog extends Component {
 	}
 }
 
-export default Blog;
+export default Blogs;

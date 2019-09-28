@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import BasePage from '../components/BasePage';
 import BaseLayout from '../components/layouts/BaseLayout'; 
 import withAuth from '../components/hoc/withAuth'; 
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Button } from 'reactstrap';
 import PortButtonDropdown from '../components/ButtonDropdown';
 import { Link, Router } from '../routes';
 import { getUserBlogs, updateBlog, deleteBlog } from '../actions';
+import { shortenText } from '../helpers/utils';
 
 
 class UserBlogs extends Component {
@@ -73,7 +74,7 @@ class UserBlogs extends Component {
 				{ blogs.map((blog, index) => (
 						<li key={index}>
 							<Link route={`/blogs/${blog._id}/edit`}>
-								<a>{ blog.title }</a>
+								<a>{shortenText(blog.title, 32)}</a>
 							</Link>
 							<PortButtonDropdown items={this.dropdownOptions(blog)} />
 						</li>
@@ -96,16 +97,21 @@ class UserBlogs extends Component {
               <div className="col-lg-8 col-md-10 mx-auto">
                 <div className="site-heading">
                   <h1>Blog Dashboard</h1>
-			            <span className="subheading">Programming, Life, and More...</span>
+			            <span className="subheading">
+			            	 Programming, Life, and More...
+
+		            	  <Link route='/blogs/new'>
+							  			<i className="new-blog-button fas fa-pencil-alt"></i>
+
+							  		</Link>	
+			            </span>
 			          </div>
 			        </div>
 			      </div>
 			    </Container>
 			  </div>
 			  <BasePage className="blog-user-page">
-          <Link route='/blogs/new'>
-			  		<a>Create a new post</a>
-			  	</Link>	
+         
           <Row>
             <Col md="6" className="mx-auto text-center">
 			       	<h2 className='blog-status-title'>Published</h2>

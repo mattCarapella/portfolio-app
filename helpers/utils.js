@@ -3,3 +3,11 @@ export const getCookieFromReq = (req, cookieKey) => {
 	if (!cookie) { return undefined }
 	return cookie.split('=')[1];
 }
+
+export const shortenText = (text, maxLength = 48) => {
+  if (text && text.length > maxLength) {
+    return `${text.substring(0, maxLength)} ...`;
+  }
+
+  return text;
+}

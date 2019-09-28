@@ -68,14 +68,16 @@ exports.getBlogBySlug = (req, res) => {
 
 exports.getUserBlogs = (req, res) => {
 	const userId = req.user.sub;
-	Blog.find({userId}, function(err, userBlogs) {
-		if (err) {
-			return res.status(422).send(err);
-		}
-
-		return res.json(userBlogs);
+	Blog.find({userId})
+			.sort({'createdAt': -1})
+			.exec(function(err, userBlogs) {
+				if (err) {
+					return res.status(422).send(err);
+				}
+				return res.json(userBlogs);
 	})
 }
+
 
 
 exports.updateBlog = (req, res) => {
