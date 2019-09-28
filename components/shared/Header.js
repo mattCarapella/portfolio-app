@@ -111,7 +111,7 @@ export default class Example extends React.Component {
               	<BsNavlink route="/portfolios" title="Portfolio" />
               </NavItem>
               <NavItem className="port-navbar-item">
-              	<BsNavlink route="/blog" title="Blog" />
+              	<BsNavlink route="/blogs" title="Blog" />
               </NavItem>
               <NavItem className="port-navbar-item">
               	<BsNavlink route="/resume" title="Resume" />

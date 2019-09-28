@@ -11,6 +11,8 @@ router.get('/dashboard', authService.checkJWT,
 
 router.get('/:id', blogController.getBlogById);
 
+router.get('/:slug', blogController.getBlogBySlug);
+
 router.post('', authService.checkJWT, 
 								authService.checkRole('siteOwner'), 
 								blogController.createBlog);
@@ -26,4 +28,5 @@ router.patch('/:id', authService.checkJWT,
 router.delete('/:id', authService.checkJWT,
 			                authService.checkRole('siteOwner'),
 			                blogController.deleteBlog);
+
 module.exports = router; 
