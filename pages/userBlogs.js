@@ -103,6 +103,9 @@ class UserBlogs extends Component {
 			    </Container>
 			  </div>
 			  <BasePage className="blog-user-page">
+          <Link route='/blogs/new'>
+			  		<a>Create a new post</a>
+			  	</Link>	
           <Row>
             <Col md="6" className="mx-auto text-center">
 			       	<h2 className='blog-status-title'>Published</h2>

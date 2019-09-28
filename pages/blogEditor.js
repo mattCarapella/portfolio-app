@@ -30,7 +30,7 @@ class BlogEditor extends Component {
 		createBlog(blog, lockId).then(createdBlog => {
 		  this.setState({isSaving: false});
 		  toast.success('Blog Saved Succesfuly!');
-		  Router.pushRoute(`/blogs/${createdBlog._id}/edit`)
+		  Router.pushRoute(`/blogs`);
 		}).catch(err => {
 			this.setState({isSaving: false});
       toast.error('Unexpected Error, Copy your progress and refresh browser please.');
