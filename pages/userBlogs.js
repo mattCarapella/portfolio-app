@@ -5,7 +5,7 @@ import withAuth from '../components/hoc/withAuth';
 import { Container, Row, Col } from 'reactstrap';
 import PortButtonDropdown from '../components/ButtonDropdown';
 import { Link, Router } from '../routes';
-import { getUserBlogs, updateBlog } from '../actions';
+import { getUserBlogs, updateBlog, deleteBlog } from '../actions';
 
 
 class UserBlogs extends Component {
@@ -29,7 +29,14 @@ class UserBlogs extends Component {
 		})
 	}
 
-	deleteBlog(){
+	deleteBlogWarning(blogId) {
+		const res = confirm('Are you sure you want to delete this post?');
+		if (res) {
+			this.deleteBlog(blogId);
+		}
+	}
+
+	deleteBlog(blogId){
 		deleteBlog(blogId)
       .then(status => {
         Router.pushRoute('/userBlogs');
@@ -55,8 +62,8 @@ class UserBlogs extends Component {
 	dropdownOptions = (blog) => {
 		const status = this.createStatus(blog.status);
 		return [ 
-			{ text: status.view, handlers: { onClick: () => this.changeBlogStatus(status.value, blog._id)}}, 
-			{ text: 'Delete', handlers: { onClick: () => this.deleteBlog() } } 
+			{ text: status.view, handlers: { onClick: () => this.changeBlogStatus(status.value, blog._id) }}, 
+			{ text: 'Delete', handlers: { onClick: () => this.deleteBlogWarning(blog._id) }} 
 		]
 	}
 
