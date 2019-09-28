@@ -18,20 +18,32 @@ class About extends Component {
             </Col>
             <Col md="6">
               <div className="fadein">
-                <p>My name is Matt Carapella and I am an experienced software engineer and freelance developer. </p>
-                <p>
-                I have a bachelor's degree in Computer Science from University at Buffalo and several years of experience working
-                on a wide range of technologies and projects.
-                </p>
-                <p>
-                Throughout my career, I have acquired advanced technical knowledge and the ability to explain
-                programming topics clearly and in detail to a broad audience. I invite you to take my course,
-                where I have put a lot of effort to explain web and software engineering concepts in a detailed,
-                hands-on and understandable way.
-                </p>
+                <p>Sed vulputate odio ut enim blandit volutpat maecenas. Congue quisque egestas diam in arcu. Turpis massa tincidunt dui ut ornare lectus sit amet est. Laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt eget. Pellentesque nec nam aliquam sem et tortor.</p>
+                <p>Vitae tempus quam pellentesque nec nam aliquam sem et tortor. At risus viverra adipiscing at. Magna etiam tempor orci eu lobortis. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. In aliquam sem fringilla ut morbi tincidunt. Natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Sit amet consectetur adipiscing elit pellentesque. Aliquam eleifend mi in nulla posuere sollicitudin aliquam ultrices. Penatibus et magnis dis parturient montes nascetur.</p>
+                <p>Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam. Laoreet id donec ultrices tincidunt. Pellentesque habitant morbi tristique senectus et netus. Morbi quis commodo odio aenean sed adipiscing diam donec adipiscing. Tristique senectus et netus et malesuada fames ac turpis egestas. Pretium fusce id velit ut tortor. A erat nam at lectus urna duis convallis convallis tellus. Nisl vel pretium lectus quam. Viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas. Blandit libero volutpat sed cras ornare arcu dui. Nisl vel pretium lectus quam id. Nec feugiat in fermentum posuere urna. Ut etiam sit amet nisl.</p>
               </div>
             </Col>
           </Row>
+	        <div className='social-links'>  
+	          <ul> 
+	            <li className="list-inline-item">
+	             <a href="http://www.github.com/mattCarapella">
+	              <span className="fa-stack fa-lg">
+	                <i className="fas fa-circle fa-stack-2x"></i>
+	                <i className="fab fa-github fa-stack-1x fa-inverse"></i>
+	              </span>
+	            </a>
+	          </li>
+	          <li className="list-inline-item">
+	            <a href="http://www.linkedin.com/in/mattcarapella">
+	              <span className="fa-stack fa-lg">
+	                <i className="fas fa-circle fa-stack-2x"></i>   
+	                <i className="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+	              </span>
+	            </a>
+	          </li>
+	        </ul>
+	      </div>
         </BasePage>
       </BaseLayout>
 		);

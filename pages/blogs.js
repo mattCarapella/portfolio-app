@@ -89,8 +89,8 @@ class Blogs extends Component {
 			              <li className="list-inline-item">
 			                <a href="#">
 			                  <span className="fa-stack fa-lg">
-			                    <i className="fas fa-circle fa-stack-2x"></i>
-			                    <i className="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+			                    <i className="fas fa-circle fa-stack-2x"></i>   
+			                    <i className="fab fa-linkedin fa-stack-1x fa-inverse"></i>
 			                  </span>
 			                </a>
 			              </li>

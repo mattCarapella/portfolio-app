@@ -8,11 +8,32 @@ import Typed from 'react-typed';
 class Index extends Component {
 	constructor (props) {
 		super(props);
+		this.state = {
+			isFlipping: false
+		}
 		this.roles = ['Ruby on Rails', 'React.js', 'Python', 'HTML/CSS', 'JavaScript']
+	}
+
+	componentDidMount() {
+		this.animateCard();
+	}
+
+	componentWillLeave() {
+		this.cardAnimationInterval && clearInterval(this.cardAnimationInterval);
+	}
+
+	animateCard() {
+		this.cardAnimationInterval = setInterval(() => {
+			this.setState({
+				isFlipping: !this.state.isFlipping
+			})
+		}, 3000);
 	}
 
 	render() {
 		const { isAuthenticated, user } = this.props.auth;
+		const { isFlipping } = this.state;
+
 		return (
 			<BaseLayout className="cover" {...this.props.auth} headerType='index'>
 			  <div className="main-section">
@@ -23,8 +44,8 @@ class Index extends Component {
 			      <Row>
 			        <Col md="6">
 			          <div className="hero-section">
-			            <div className={`flipper`}>
-			              <div className="back">
+			            <div className={`flipper ${isFlipping ? 'isFlipping' : ''}`}>
+			              <div className="front">
 			                <div className="hero-section-content">
 			                  <h2> Full Stack Web Developer </h2>
 			                  <div className="hero-section-content-intro">
@@ -32,6 +53,18 @@ class Index extends Component {
 			                  </div>
 			                </div>
 			                <img className="image" src="static/images/section-1.png"/>
+			                <div className="shadow-custom">
+			                  <div className="shadow-inner"> </div>
+			                </div>
+			              </div>
+			              <div className="back">
+			                <div className="hero-section-content">
+			                  <h2> Back Text Goes Here </h2>
+			                  <div className="hero-section-content-intro">
+			                    Pulvinar sapien et ligula ullamcorper. Vitae congue eu consequat ac felis donec. Vitae tempus quam pellentesque nec nam aliquam sem et tortor. At risus viverra adipiscing at.
+			                  </div>
+			                </div>
+			                <img className="image" src="static/images/section-2.png"/>
 			                <div className="shadow-custom">
 			                  <div className="shadow-inner"> </div>
 			                </div>
