@@ -54,8 +54,8 @@ class Blogs extends Component {
 			      <div className="row">
 			        <div className="col-lg-8 col-md-10 mx-auto">
 			          <div className="site-heading">
-			            <h1>Blog</h1>
-			            <span className="subheading">Programming, Life, and More...</span>
+			            <h1>Coding, Life, and More...</h1>
+			            <span className="subheading"></span>
 			          </div>
 			        </div>
 			      </div>

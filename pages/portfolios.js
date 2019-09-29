@@ -3,7 +3,7 @@ import { Link } from '../routes';
 import BasePage from '../components/BasePage';
 import BaseLayout from '../components/layouts/BaseLayout';
 import PortfolioCard from '../components/portfolios/PortfolioCard';
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col, Container, Button } from 'reactstrap';
 import { Router } from '../routes';
 
 import { getPortfolios, deletePortfolio } from '../actions';
@@ -70,15 +70,29 @@ class Portfolios extends Component {
 		const { isAuthenticated, isSiteOwner } = this.props.auth;
 		
 		return (
-			<BaseLayout { ...this.props.auth }>
-				<BasePage className='portfolio-page' title='Projects'>	
-					{ isAuthenticated && isSiteOwner &&		
-						<Button onClick={ () => Router.pushRoute('/portfolioNew') }
-										className='create-port-btn' 
-										color='success'>
-							Add a Project
-						</Button>
-					}
+			<BaseLayout headerType={'landing'} className="portfolio-listing-page" { ...this.props.auth }>
+				<div className="masthead-port" style={{"backgroundImage": "url('/static/images/keyboard_0001.jpeg')"}}>
+			    <div className="overlay-port"></div>
+			    <Container>
+			      <div className="row">
+			        <div className="col-lg-8 col-md-10 mx-auto">
+			          <div className='site-heading-port'>
+			            <h1 className='portfolio-heading'>Projects</h1>
+			            <span className="subheading-port"></span>
+			            { isAuthenticated && isSiteOwner &&		
+										<Button onClick={ () => Router.pushRoute('/portfolioNew') }
+														className='create-port-btn' 
+														color='primary'>
+											Add a Project
+										</Button>
+									}
+			          </div>
+			        </div>
+			      </div>
+			    </Container>
+			  </div>
+				<BasePage className='portfolio-page'>	
+					
 					<Row>{ this.renderPortfolios(portfolios) }</Row>
 				</BasePage>
 			</BaseLayout>

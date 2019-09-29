@@ -25,7 +25,9 @@ class Portfolio extends Component {
 
 		return (
 			<BaseLayout {...this.props.auth}>
+
 				<BasePage className='portfolio-page'>	
+				<div className="masthead" style={{"backgroundImage": "url('/static/images/project_01.jpg')"}} />
 					<h1>Portfolio Page</h1>
 					<h2>{portfolio.title}</h2>
 					<h2>{this.props.router.query.id}</h2>

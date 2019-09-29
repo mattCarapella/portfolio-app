@@ -9,15 +9,13 @@ class PortfolioCardDetail extends React.Component {
     return (
       <div>
         <Modal isOpen={isOpen} toggle={toggle}>
-          <ModalHeader toggle={toggle}>Position</ModalHeader>
+          <ModalHeader toggle={toggle} className='modal-header'>{portfolio.title}</ModalHeader>
           <ModalBody>
             <p><b>Description: </b>{portfolio.description}</p> 
-            <p><b>Languages / Frameworks: </b>{portfolio.languages}</p>
-            <p><b>Company: </b>{portfolio.company}</p> 
-            <p><b>Position: </b>{portfolio.position}</p> 
-            <p><b>Location: </b>{portfolio.location}</p> 
-            <p><b>Start Date: </b>{moment(portfolio.startDate).format('MMMM YYYY')}</p> 
-            <p><b>End Date: </b>{portfolio.endDate ? moment(portfolio.endDate).format('MMMM YYYY') : 'Still Working Here'}</p> 
+            <p><b>Technologies Used: </b>{portfolio.languages}</p>
+            <p><b>URL: </b>{portfolio.url}</p>
+            <p><b>Github: </b>{portfolio.github_link}</p>
+         
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={toggle}>Back</Button>

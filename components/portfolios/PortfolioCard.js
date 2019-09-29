@@ -27,11 +27,11 @@ export default class PortfolioCard extends Component {
 	    <span onClick={this.handleToggle}>
 	    	<PortfolioCardDetail toggle={this.handleToggle} portfolio={portfolio} isOpen={isOpen} />
 	      <Card className="portfolio-card">
-	        <CardHeader className="portfolio-card-header">{portfolio.position}</CardHeader>
+	        
 	        <CardBody>
-	          <p className="portfolio-card-city">{portfolio.location} </p>
-	          <CardTitle className="portfolio-card-title">{portfolio.title}</CardTitle>
-	          <CardTitle className="portfolio-card-text">{portfolio.languages}</CardTitle>
+	          <CardTitle className="portfolio-card-header">{portfolio.title}</CardTitle>
+	          
+	          <CardTitle className="portfolio-card-lang">{portfolio.languages}</CardTitle>
 	          <CardText className="portfolio-card-text">{portfolio.description}</CardText>
 	          <div className="readMore"> 
 	          	{ children }
