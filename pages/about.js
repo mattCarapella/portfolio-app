@@ -23,7 +23,7 @@ class About extends Component {
                 <p>Vitae tempus quam pellentesque nec nam aliquam sem et tortor. At risus viverra adipiscing at. Magna etiam tempor orci eu lobortis. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. In aliquam sem fringilla ut morbi tincidunt. Natoque penatibus et magnis dis parturient montes nascetur ridiculus mus. Sit amet consectetur adipiscing elit pellentesque. Aliquam eleifend mi in nulla posuere sollicitudin aliquam ultrices. Penatibus et magnis dis parturient montes nascetur.</p>
                 <p>Tristique sollicitudin nibh sit amet commodo nulla facilisi nullam. Laoreet id donec ultrices tincidunt. Pellentesque habitant morbi tristique senectus et netus. Morbi quis commodo odio aenean sed adipiscing diam donec adipiscing. Tristique senectus et netus et malesuada fames ac turpis egestas. Pretium fusce id velit ut tortor. A erat nam at lectus urna duis convallis convallis tellus. Nisl vel pretium lectus quam. Viverra maecenas accumsan lacus vel facilisis volutpat est velit egestas. Blandit libero volutpat sed cras ornare arcu dui. Nisl vel pretium lectus quam id. Nec feugiat in fermentum posuere urna. Ut etiam sit amet nisl.</p>
               </div>
-              <div className='about-social-links' style={{'margin-top': '60px'}}>	
+              <div className='about-social-links' style={{'marginTop': '60px'}}>	
               	<SocialLinks />
               </div>
             </Col>

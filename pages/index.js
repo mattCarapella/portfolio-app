@@ -11,7 +11,7 @@ class Index extends Component {
 		this.state = {
 			isFlipping: false
 		}
-		this.roles = ['Ruby on Rails', 'React.js', 'Python', 'HTML/CSS', 'JavaScript', 'Node.js', 'SQL, PostgreSQL, MongoDB']
+		this.roles = ['Ruby on Rails', 'React.js', 'Python', 'HTML/CSS', 'JavaScript', 'Node.js', 'SQL / PostgreSQL', 'MongoDB']
 	}
 
 	componentDidMount() {

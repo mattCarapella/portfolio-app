@@ -4,11 +4,13 @@ import jwt from 'jsonwebtoken';
 import axios from 'axios';
 import { getCookieFromReq } from '../helpers/utils';
 
+const CLIENT_ID  = process.env.CLIENT_ID;
+
 class Auth0 {
 	constructor() {
 		this.auth0 = new auth0.WebAuth({
 			domain: 'mattcarapella.auth0.com',
-			clientID: '1jPjIJ1sTXaYcj2yaNdes4cvJnvRPFA0',
+			clientID: CLIENT_ID,
 			redirectUri: `${process.env.BASE_URL}/callback`,
 			responseType: 'token id_token',	
 			scope: 'openid profile'
@@ -37,9 +39,7 @@ class Auth0 {
 
 	setSession(authResult) {
 		const expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
-		Cookies.set('user', authResult.idTokenPayload);
 		Cookies.set('jwt', authResult.idToken);
-		Cookies.set('expiresAt', expiresAt);
 	}
 
 	login() {
@@ -47,12 +47,11 @@ class Auth0 {
 	}
 
 	logout() {
-		Cookies.remove('user');
 		Cookies.remove('jwt');
-		Cookies.remove('expiresAt');		
+
 		this.auth0.logout({
 			returnTo: '',
-			clientID: '1jPjIJ1sTXaYcj2yaNdes4cvJnvRPFA0' 
+			clientID: CLIENT_ID  
 		})
 	}
 
