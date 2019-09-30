@@ -3,8 +3,9 @@ import Header from '../shared/Header';
 import Head from 'next/head';
 
 const BaseLayout = (props) => {
-	const { className, isAuthenticated, user, isSiteOwner, children, title, cannonical } = props;
+	const { className, isAuthenticated, user, isSiteOwner, children, cannonical } = props;
 	const headerType = props.headerType || "default";
+	const title = props.title || 'Matt Carapella';
 
 	return (
 		<Fragment>
@@ -12,7 +13,7 @@ const BaseLayout = (props) => {
 				<title>{title}</title>
 				<meta name='description' content='My name is Matt Carapella and I am a full-stack web developer specializing in Ruby on Rails, ReactJS, NodeJs, Python, and various other languages.'/>
 				<meta name='keywords' content='matt carapella, carapella developer, carapella ruby, carapella react, carapella javascript' />
-				<meta property='og"title' content='Matt Carapella - Full-Stack Developer' />
+				<meta property='og:title' content='Matt Carapella - Full-Stack Developer' />
 				<meta property='og:locale' content='en_US' />
 				<meta property='og:url' content='http://localhost:3000' />
 				<meta property='og:type' content='website' />
