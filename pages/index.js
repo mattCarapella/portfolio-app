@@ -11,7 +11,7 @@ class Index extends Component {
 		this.state = {
 			isFlipping: false
 		}
-		this.roles = ['Ruby on Rails', 'React.js', 'Python', 'HTML/CSS', 'JavaScript', 'Node.js', 'SQL', 'PostgreSQL',  'MongoDB']
+		this.roles = ['Ruby on Rails', 'React.js', 'Python', 'HTML/CSS', 'JavaScript', 'Node.js', 'SQL, PostgreSQL, MongoDB']
 	}
 
 	componentDidMount() {
@@ -35,7 +35,9 @@ class Index extends Component {
 		const { isFlipping } = this.state;
 
 		return (
-			<BaseLayout className={`cover ${isFlipping ? 'cover-1' : 'cover-0'}`} {...this.props.auth} headerType='index'>
+			<BaseLayout className={`cover ${isFlipping ? 'cover-1' : 'cover-0'}`} {...this.props.auth} 
+									headerType='index'
+									title='Matt Carapella'>
 			  <div className="main-section">
 			    <div className="background-image">
 			      <img src="/static/images/background-index.png" />

@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const next = require('next');
 const mongoose = require('mongoose');
 const routes = require('../routes');
@@ -18,6 +19,13 @@ const bookRoutes = require('./routes/book');
 const portfolioRoutes = require('./routes/portfolio');
 const blogRoutes = require('./routes/blog');
 
+const robotsOptions = {
+	root: path.join(__dirname, '../static'),
+	headers: {
+		'Content-Type': 'text/plain;charset=UTF-8'
+	}
+}
+
 const secretData = [
 	{ title: 'Secret Data 1', description: 'some data ........' },
 	{ title: 'Secret Data 2', description: 'some data 2...........'}
@@ -35,6 +43,10 @@ app.prepare()
 		server.use('/api/v1/books', bookRoutes);
 		server.use('/api/v1/portfolios', portfolioRoutes);
 		server.use('/api/v1/blogs', blogRoutes);
+
+		server.get('/robots.txt', (req, res) => {
+			return res.status(200).sendFile('robots.txt', robotsOptions)
+		})
 
 		server.get('/api/v1/secret', authService.checkJWT, (req, res) => {
 			return res.json(secretData);

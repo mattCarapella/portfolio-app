@@ -70,7 +70,7 @@ class Portfolios extends Component {
 		const { isAuthenticated, isSiteOwner } = this.props.auth;
 		
 		return (
-			<BaseLayout headerType={'landing'} className="portfolio-listing-page" { ...this.props.auth }>
+			<BaseLayout headerType={'landing'} className="portfolio-listing-page" { ...this.props.auth } title='Matt Carapella | Projects'>
 				<div className="masthead-port" style={{"backgroundImage": "url('/static/images/keyboard_0001.jpeg')"}}>
 			    <div className="overlay-port"></div>
 			    <Container>
@@ -80,7 +80,7 @@ class Portfolios extends Component {
 			            <h1 className='portfolio-heading'>Projects</h1>
 			            <span className="subheading-port"></span>
 			            { isAuthenticated && isSiteOwner &&		
-										<Button onClick={ () => Router.pushRoute('/portfolioNew') }
+										<Button onClick={ () => Router.pushRoute('/portfolios/new') }
 														className='create-port-btn' 
 														color='primary'>
 											Add a Project

@@ -47,7 +47,7 @@ class Blogs extends Component {
 	
 
 		return (
-			<BaseLayout headerType={'landing'} className="blog-listing-page">
+			<BaseLayout headerType={'landing'} className='blog-listing-page' title='Matt Carapella | Blog'>
 			  <div className="masthead" style={{"backgroundImage": "url('/static/images/project_01.jpg')"}}>
 			    <div className="overlay"></div>
 			    <Container>
