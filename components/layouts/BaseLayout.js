@@ -19,7 +19,7 @@ const BaseLayout = (props) => {
 				<meta property='og:description' content='My name is Matt Carapella and I am a full-stack web developer specializing in Ruby on Rails, ReactJS, NodeJs, Python, and various other languages.'/>
 				
 				{cannonical && <link rel='cannonical' href={`http://localhost:3000${cannonical}`}/>}
-				
+				<link rel='icon' type='image/ico' href='/static/favicon.ico'/>
 				<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 				<script src="https://kit.fontawesome.com/8e255610ab.js"></script>
 			</Head>

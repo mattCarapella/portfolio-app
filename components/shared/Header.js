@@ -114,9 +114,6 @@ export default class Example extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="port-navbar-item">
-              	<BsNavlink route="/" title="Home" />
-              </NavItem>
-              <NavItem className="port-navbar-item">
               	<BsNavlink route="/portfolios" title="Projects" />
               </NavItem>
 
