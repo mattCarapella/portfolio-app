@@ -30,6 +30,9 @@ class About extends Component {
           </Row>
 	      
         </BasePage>
+        <style>
+          {`@import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css'`}
+        </style>
       </BaseLayout>
 		);
 	}

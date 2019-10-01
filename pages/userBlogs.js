@@ -98,11 +98,9 @@ class UserBlogs extends Component {
                 <div className="site-heading">
                   <h1>Blog Dashboard</h1>
 			            <span className="subheading">
-			            	 Programming, Life, and More...
-
+			            	Programming, Life, and More...
 		            	  <Link route='/blogs/new'>
-							  			<i className="new-blog-button fas fa-pencil-alt"></i>
-
+							  			<i className="new-blog-button fas fa-plus-circle"></i>
 							  		</Link>	
 			            </span>
 			          </div>
@@ -110,8 +108,7 @@ class UserBlogs extends Component {
 			      </div>
 			    </Container>
 			  </div>
-			  <BasePage className="blog-user-page">
-         
+			  <BasePage className="blog-user-page">     
           <Row>
             <Col md="6" className="mx-auto text-center">
 			       	<h2 className='blog-status-title'>Published</h2>
@@ -123,6 +120,9 @@ class UserBlogs extends Component {
             </Col>
 			    </Row>		    
 			  </BasePage>
+			  <style>
+          {`@import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css'`}
+        </style>
 			</BaseLayout> 
 		);
 	}

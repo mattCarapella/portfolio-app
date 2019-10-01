@@ -76,6 +76,11 @@ class Blogs extends Component {
 			      <SocialLinks />
 			    </footer>
 			  </BasePage>
+         <style>
+          {`
+              @import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css')
+          `}
+        </style>
 			</BaseLayout>
 
 		);

@@ -1,6 +1,7 @@
 import React from 'react'
 import App, { Container } from 'next/app';
 import { ToastContainer } from 'react-toastify';
+import Fonts from '../helpers/Fonts';
 import auth0 from '../services/auth0';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/main.scss';
@@ -27,6 +28,10 @@ class MyApp extends App {
 
     return { pageProps, auth };
   } 
+
+  componentDidMount() {
+    Fonts();
+  }
 
   notify = () => toast("Wow so easy !");
 
