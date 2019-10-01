@@ -4,6 +4,9 @@ import { Container, Row, Col } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/main.scss';
 import Typed from 'react-typed';
+import Particles from 'react-particles-js';
+import About from './about';
+import SocialLinks from '../components/shared/SocialLinks';
 
 class Index extends Component {
 	constructor (props) {
@@ -35,77 +38,163 @@ class Index extends Component {
 		const { isFlipping } = this.state;
 
 		return (
-			<BaseLayout className={`cover ${isFlipping ? 'cover-1' : 'cover-0'}`} {...this.props.auth} 
-									headerType='index'
-									title='Matthew Carapella'>
-			  <div className="main-section">
-			    <div className="background-image">
-			      <img src="/static/images/background-index.png" />
-			    </div>
-			    <Container>
-			      <Row>
-			        <Col md="6">
-			          <div className="hero-section">
-			            <div className={`flipper ${isFlipping ? 'isFlipping' : ''}`}>
-			              <div className="front">
-			                <div className="hero-section-content">
-			                  <h2> Full Stack Web Developer </h2>
-			                  <div className="hero-section-content-intro">
-			                    Have a look at my portfolio and job history.
-			                  </div>
-			                </div>
-			                <img className="image" src="static/images/section-1.jpg"/>
-			                <div className="shadow-custom">
-			                  <div className="shadow-inner"> </div>
-			                </div>
-			              </div>
-			              <div className="back">
-			                <div className="hero-section-content">
-			                  <h2> Back Text Goes Here </h2>
-			                  <div className="hero-section-content-intro">
-			                    Pulvinar sapien et ligula ullamcorper. Vitae congue eu consequat ac felis donec. Vitae tempus quam pellentesque nec nam aliquam sem et tortor. At risus viverra adipiscing at.
-			                  </div>
-			                </div>
-			                <img className="image" src="static/images/section-2.jpg"/>
-			                <div className="shadow-custom shadow-custom-2">
-			                  <div className="shadow-inner"> </div>
-			                </div>
-			              </div>
-			            </div>
-			          </div>
-			        </Col>
-			        <Col md="6" className="hero-welcome-wrapper">
-			          <div className="hero-welcome-text">
-			            <h1>
-			              Matthew Carapella.
-			            </h1>  
-				          <div className="moving-text-container">  
-				            <Typed
-										  loop
-										  typeSpeed={70}
-										  backSpeed={40}
-										  strings={this.roles}
-										  backDelay={1000}
-										  loopCount={0}
-										  showCursor={false}
-										  className="self-typed"
-										  cursorChar="..."
-										/>
-									</div>
-									<h1>
-			              Get informed, collaborate and discover projects I was working on through the years!
-			            </h1>
-			          </div>
-			          <div className="hero-welcome-bio">
-			            <h1>
-			              Let's take a look on my work.
-			            </h1>
-			          </div>
-			        </Col>
-			      </Row>
-			    </Container>
-			  </div>
+			
+			<BaseLayout className='index-page' {...this.props.auth} 
+										headerType='index'
+										title='Matthew Carapella'>
+				<section id='index'>
+				  <div className="main-section">
+				    <div className="background-image">
+				      <Particles 
+				      	params={{
+				      		particles: {
+	            			number: {
+								      value: 80,
+								     density: {
+								        enable: true,
+								        value_area: 800
+								      }
+								    },
+								    color: {
+								      value: '#ffffff'
+								    },
+								    shape: {
+								      type: 'circle',
+								      stroke: {
+								        width: 0,
+								        color: '#000000'
+								      },
+								      polygon: {
+								        nb_sides: 3
+								      },
+								      
+								    },
+								    opacity: {
+								      value: 0.2683101981549727,
+								      random: true,
+								      anim: {
+								        enable: false,
+								        speed: 1,
+								        opacity_min: 0.1,
+								        sync: false
+								      }
+								    },
+								    size: {
+								      value: 11.83721462448409,
+								      random: true,
+								      anim: {
+								        enable: false,
+								        speed: 40,
+								        size_min: 0.1,
+								        sync: false
+								      }
+								    },
+								    line_linked: {
+								      enable: false,
+								      distance: 785.6719098241061,
+								      color: "#ffffff",
+								      opacity: 0.4,
+								      width: 1.4430708547789706
+								    },
+								    move: {
+								      enable: true,
+								      speed: 1.5782952832645452,
+								      direction: "none",
+								      random: true,
+								      straight: false,
+								      out_mode: "out",
+								      bounce: false,
+								      attract: {
+								        enable: false,
+								        rotateX: 600,
+								        rotateY: 1200
+								      }
+								    }
+								  },
+								  interactivity: {
+								    detect_on: "canvas",
+								    events: {
+								      onhover: {
+								        enable: false,
+								        mode: "grab"
+								      },
+								      onclick: {
+								        enable: true,
+								        mode: "repulse"
+								      },
+								      resize: true
+								    },
+								    modes: {
+								      grab: {
+								       distance: 400,
+								        line_linked: {
+								          opacity: 1
+								        }
+								      },
+								      bubble: {
+								        distance: 400,
+								        size: 40,
+								        duration: 2,
+								        opacity: 8,
+								        speed: 3
+								      },
+								      repulse: {
+								        distance: 200,
+								        duration: 0.4
+								      },
+								      push: {
+								        particles_nb: 4
+								      },
+								      remove: {
+								        particles_nb: 2
+								      }
+								    }
+								  },
+								  retina_detect: true
+	            		}
+				      	}
+				      />
+				    </div>
+				    <Container>
+				      <Row>
+				        <Col md="6">
+				         
+				        </Col>
+				        <Col md="6" className="hero-welcome-wrapper">
+				          <div className="hero-welcome-text">
+				            <h1>
+				              Matthew Carapella
+				            </h1>  
+					          <div className="moving-text-container">  
+					            <Typed
+											  loop
+											  typeSpeed={70}
+											  backSpeed={40}
+											  strings={this.roles}
+											  backDelay={1000}
+											  loopCount={0}
+											  showCursor={false}
+											  className="self-typed"
+											  cursorChar="..."
+											/>
+										</div>
+										<h1>
+				              I am a full-stack developer, currently working out of Buffalo, NY.
+				            </h1>
+				          </div>
+				          <div className="hero-welcome-bio">
+				            <h1>
+				              Learn More
+				            </h1>
+				          </div>
+				        </Col>
+				      </Row>
+				    </Container>
+				  </div>
+				</section>
 			</BaseLayout>
+			
+
 		)
 	}
 }

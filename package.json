@@ -46,6 +46,7 @@
     "react-datepicker": "^1.8.0",
     "react-dom": "^16.6.0",
     "react-emotion": "^9.2.12",
+    "react-particles-js": "^2.7.0",
     "react-toastify": "^4.5.2",
     "react-typed": "^1.2.0",
     "reactstrap": "^6.5.0",
