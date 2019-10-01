@@ -30,7 +30,7 @@ class MyApp extends App {
   } 
 
   componentDidMount() {
-    Fonts();
+    // Fonts();
   }
 
   notify = () => toast("Wow so easy !");
