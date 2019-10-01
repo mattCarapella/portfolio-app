@@ -6,12 +6,13 @@ const routes = require('../routes');
 
 // SERVICES
 const authService = require('./services/auth');
+
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = routes.getRequestHandler(app);
 const config = require('./config');
 
-const Book = require('./models/book'); 
+const Book = require('./models/book');
 const bodyParser = require('body-parser');
 
 // ROUTES 
