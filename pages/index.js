@@ -54,7 +54,7 @@ class Index extends Component {
 			                    Have a look at my portfolio and job history.
 			                  </div>
 			                </div>
-			                <img className="image" src="static/images/section-1.png"/>
+			                <img className="image" src="static/images/section-1.jpg"/>
 			                <div className="shadow-custom">
 			                  <div className="shadow-inner"> </div>
 			                </div>
@@ -66,7 +66,7 @@ class Index extends Component {
 			                    Pulvinar sapien et ligula ullamcorper. Vitae congue eu consequat ac felis donec. Vitae tempus quam pellentesque nec nam aliquam sem et tortor. At risus viverra adipiscing at.
 			                  </div>
 			                </div>
-			                <img className="image" src="static/images/section-2.png"/>
+			                <img className="image" src="static/images/section-2.jpg"/>
 			                <div className="shadow-custom shadow-custom-2">
 			                  <div className="shadow-inner"> </div>
 			                </div>

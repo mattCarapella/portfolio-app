@@ -77,7 +77,7 @@ class Portfolios extends Component {
 			      <div className="row">
 			        <div className="col-lg-8 col-md-10 mx-auto">
 			          <div className='site-heading-port'>
-			            <h1 className='portfolio-heading'>Projects</h1>
+			            <h1 className='site-heading'>Projects</h1>
 			            <span className="subheading-port"></span>
 			            { isAuthenticated && isSiteOwner &&		
 										<Button onClick={ () => Router.pushRoute('/portfolios/new') }
