@@ -37,7 +37,7 @@ class Index extends Component {
 		return (
 			<BaseLayout className={`cover ${isFlipping ? 'cover-1' : 'cover-0'}`} {...this.props.auth} 
 									headerType='index'
-									title='Matt Carapella'>
+									title='Matthew Carapella'>
 			  <div className="main-section">
 			    <div className="background-image">
 			      <img src="/static/images/background-index.png" />

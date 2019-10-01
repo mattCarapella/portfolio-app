@@ -92,9 +92,11 @@ class Portfolios extends Component {
 			    </Container>
 			  </div>
 				<BasePage className='portfolio-page'>	
-					
 					<Row>{ this.renderPortfolios(portfolios) }</Row>
 				</BasePage>
+				<style>
+          {`@import url('https://use.fontawesome.com/releases/v5.5.0/css/all.css'`}
+        </style>
 			</BaseLayout>
 		);
 	}
