@@ -15,11 +15,11 @@ const BaseLayout = (props) => {
 				<meta name='keywords' content='matt carapella, carapella developer, carapella ruby, carapella react, carapella javascript' />
 				<meta property='og:title' content='Matt Carapella - Full-Stack Developer' />
 				<meta property='og:locale' content='en_US' />
-				<meta property='og:url' content='http://localhost:3000' />
+				<meta property="og:url" content={`${process.env.BASE_URL}`}/>
 				<meta property='og:type' content='website' />
 				<meta property='og:description' content='My name is Matt Carapella and I am a full-stack web developer specializing in Ruby on Rails, ReactJS, NodeJs, Python, and various other languages.'/>
 				
-				{cannonical && <link rel='cannonical' href={`http://localhost:3000${cannonical}`}/>}
+				{cannonical && <link rel="cannonical" href={`${process.env.BASE_URL}${cannonical}`}/>}
 				<link rel='icon' type='image/ico' href='/static/favicon.ico'/>
 				<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 				<script src="https://kit.fontawesome.com/8e255610ab.js"></script>
