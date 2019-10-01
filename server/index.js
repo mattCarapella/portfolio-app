@@ -40,7 +40,7 @@ mongoose.connect(config.DB_URI, { useNewUrlParser: true })
 app.prepare()
 	.then(() => {
 		const server = express();
-		server.user(compression());
+		server.use(compression());
 		server.use(bodyParser.json());
 
 		server.use('/api/v1/books', bookRoutes);
