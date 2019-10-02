@@ -15,6 +15,7 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap';
 import auth0 from '../../services/auth0';
+import { Link as LinkScroll, animateScroll as scroll } from "react-scroll";
 
 const BsNavlink = (props) => {
 	const { route, title } = props;
@@ -69,7 +70,7 @@ export default class Example extends React.Component {
 
     if (isSiteOwner) {
       return (
-        <Dropdown nav className='port-navbar-link port-dropdown-menu' isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
+        <Dropdown nav className='port-navbar-link port-dropdown-menu port-navbar' isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
           <DropdownToggle className='port-dropdown-toggle' nav caret>
             Blog 
           </DropdownToggle>
@@ -114,6 +115,9 @@ export default class Example extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="port-navbar-item">
+                <BsNavlink route="/about" title="About" />
+              </NavItem>
+              <NavItem className="port-navbar-item">
               	<BsNavlink route="/portfolios" title="Projects" />
               </NavItem>
 
@@ -122,9 +126,7 @@ export default class Example extends React.Component {
               <NavItem className="port-navbar-item">
               	<BsNavlink route="/resume" title="Resume" />
               </NavItem>
-              <NavItem className="port-navbar-item">
-              	<BsNavlink route="/about" title="About" />
-              </NavItem>
+              
               
 	            { !isAuthenticated &&
 		             	<NavItem className="port-navbar-item">
@@ -145,3 +147,19 @@ export default class Example extends React.Component {
     );
   }
 }
+
+
+// <NavItem className="port-navbar-item">
+                
+//                 <LinkScroll
+//                         className='nav-link port-navbar-link nav-scroll-item'
+//                         activeClass="active"
+//                         to="about"
+//                         spy={true}
+//                         smooth={true}
+//                         offset={-70}
+//                         duration={500}
+//                       >
+//                         About
+//                </LinkScroll>
+//               </NavItem>

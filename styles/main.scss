@@ -1,5 +1,8 @@
 @import './shared/colors';
 @import './shared/mixins';
+@import './base/animations';
+@import './components/idx-about';
+@import './components/idx-projects';
 @import './index';
 @import './header';
 @import './portfolios';
@@ -10,16 +13,10 @@
 @import './social-links';
 @import url('https://fonts.googleapis.com/css?family=Montserrat:100,300,400,600,700&display=swap');
 
-.montserrat-loaded {
-  html, body {
-   font-family: 'Montserrat', 'Helvetica'
-  }
-}
-
 html, body {
 	height:100%;
   width:100%;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Montserrat', 'Helvetica'
 }
 
 h1 {

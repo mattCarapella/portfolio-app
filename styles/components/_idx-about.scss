@@ -1,0 +1,38 @@
+
+#about {
+  .about-page-idx { 
+    background-color: #EDEAE5;
+  }
+
+  .about-text {
+  	font-size: 1.2rem;
+    // padding-bottom: 60px;
+  }
+}
+
+.projects-scroll {
+  text-align: center;
+  padding-top: 60px;
+}
+
+.scroll-projects-btn {
+  font-size: 30px;
+  color: white !important;
+  background-color: #2D283A;
+  padding: 15px;
+  border: white solid 3px;
+  border-radius: 10px;
+ 
+  cursor: pointer;
+}
+
+.contact {
+	position: absolute;
+	bottom: 0;
+}
+
+.about-text-2 {
+	padding-top: 30px;
+	padding-bottom: 20px;
+	text-align: center;
+}

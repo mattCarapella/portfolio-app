@@ -1,8 +1,11 @@
 // HEADER
 .port-navbar.port-nav-base {
   width: 100%;
-  z-index: 15;
+  height: 7vh;
+  background-color: #252934 !important;
+  z-index: 99999;
   padding: 40px;
+  position: fixed;
 
   .port-navbar {
     &-brand {
@@ -29,9 +32,9 @@
         color: #dba919;
       }
 
-      &:hover, &:focus {
-        color: #dba919;
-      }
+      // &:hover, &:focus {
+      //   color: #dba919;
+      // }
     }
   }
 
@@ -64,4 +67,8 @@
 
 .bg-transparent.menu-close {
   transition: 1s;
+}
+
+.nav-scroll-item {
+  cursor: pointer;
 }

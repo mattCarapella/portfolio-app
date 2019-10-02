@@ -3,20 +3,32 @@
 .cover {
   //background-image: linear-gradient(45deg,#00aeef 0%,#096fb9 100%);
   background-color: #252934;
-  position: relative;
+
 }
 
 .wrapper {
-  min-height: 100vh;
-  min-width: 100vw;
-  margin-top: 0;
-  position: relative;
+  // min-height: 100vh;
+  // min-width: 100vw;
+  // margin-top: 0;
+  // position: relative;
 }
 
+
 .main-section {
-  top: 150px;
+  // top: 150px;
+  height: 900px;
   width: 100%;
   padding: 150px 0 0;
+  position: relative;
+
+  &__text-box {
+    position: absolute;
+    height: 700px;
+    // top: 40%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    text-align: center;
+  }
 }
 
 .hero-section{
@@ -49,12 +61,22 @@
   max-width: 100%;
 }
 
+.row1 {
+  height: 80%;
+}
+
 .hero-welcome-text > h1 {
   color: white;
   text-transform: uppercase;
   font-size: 27px;
   margin-top: 80px;
+
 }
+
+
+.text {
+  margin-bottom: 50px;
+}  
 
 .moving-text-container {
   padding-top: 8px;
@@ -62,8 +84,7 @@
 }
 
 .hero-welcome-bio {
-  margin-top: 20px;
-  color: white;
+
   .fa-stack {
     font-size: 28px;
   }
@@ -154,5 +175,80 @@
 .back {
   transform: rotateY(180deg);
 }
+
+.scroll-about-btn { 
+  font-size: 30px;
+  color: white !important;
+  background-color: #2D283A;
+  padding: 15px;
+  border: white solid 3px;
+  border-radius: 10px;
+  margin-top: 100px;
+  cursor: pointer;
+}  
+
+
+
+
+
+#index {
+  height: 100vh;
+}
+
+
+
+
+.header {
+  height: 80vh;
+  background-color: #252934;
+  background-size: cover;       /* fits element inside container */
+  background-position: top;     /* makes top of image always remain at top of container */
+  position: relative;
+ 
+  &__text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    .about-scroll {
+   
+    }
+  }
+}
+
+.heading-primary {
+  color: white;
+  backface-visibility: hidden;  /* hides animation shakes in browser */
+  margin-bottom: 6rem;
+
+  &--main {
+    display: block;
+    font-size: 2.8rem;
+    font-weight: 400;
+    animation: moveInLeft 1s ease-out;
+    margin-bottom: 4rem;  
+
+  }
+
+  &--sub {
+    display: block;
+    font-size: 1.7rem;
+    font-weight: 400;
+    animation: moveInRight 1s ease-out;
+    margin-bottom: 1.8rem;  
+
+  } 
+}
+
+
+
+.highlight {
+  color: red !important;
+  font-weight: 800 !important;
+
+}
+
 
 
